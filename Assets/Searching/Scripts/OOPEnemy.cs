@@ -33,7 +33,7 @@ namespace Searching
             }
         }
 
-        public void RandomMove()
+        /*public void RandomMove()
         {
             int toX = positionX;
             int toY = positionY;
@@ -63,6 +63,39 @@ namespace Searching
                 mapGenerator.enemies[positionX, positionY] = null;
                 positionX = toX;
                 positionY = toY;
+                mapGenerator.mapdata[positionX, positionY] = mapGenerator.enemy;
+                mapGenerator.enemies[positionX, positionY] = this;
+                transform.position = new Vector3(positionX, positionY, 0);
+            }
+        }*/ //Enemy Random walk
+        
+        public void MoveTowardsPlayer()
+        {
+            int playerX = mapGenerator.player.positionX;
+            int playerY = mapGenerator.player.positionY;
+            int toX = positionX;
+            int toY = positionY;
+            
+            int dx = playerX - positionX;
+            int dy = playerY - positionY;
+            
+            if (Mathf.Abs(dx) > Mathf.Abs(dy))
+            {
+                toX += (dx > 0) ? 1 : -1;
+            }
+            else
+            {
+                toY += (dy > 0) ? 1 : -1;
+            }
+            
+            if (!HasPlacement(toX, toY))
+            {
+                mapGenerator.mapdata[positionX, positionY] = mapGenerator.empty;
+                mapGenerator.enemies[positionX, positionY] = null;
+                
+                positionX = toX;
+                positionY = toY;
+                
                 mapGenerator.mapdata[positionX, positionY] = mapGenerator.enemy;
                 mapGenerator.enemies[positionX, positionY] = this;
                 transform.position = new Vector3(positionX, positionY, 0);
