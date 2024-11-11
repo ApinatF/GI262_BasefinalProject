@@ -61,7 +61,8 @@ namespace Searching
             {
                 inventory.UseItem("FireStorm");
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
-                int count = 3;
+                
+                /*int count = 3;
                 if (count > enemies.Length)
                 {
                     count = enemies.Length;
@@ -69,6 +70,26 @@ namespace Searching
                 for (int i = 0; i < count; i++)
                 {
                     enemies[i].TakeDamage(10);
+                }*/ //โจมตีตามจำนวน
+                
+                int attackRadius = 1;
+                
+                int playerX = this.positionX;
+                int playerY = this.positionY;
+                
+                foreach (Character enemy in enemies)
+                {
+                    if (enemy != null)
+                    {
+                        int distanceX = Mathf.Abs(enemy.positionX - playerX);
+                        int distanceY = Mathf.Abs(enemy.positionY - playerY);
+                        
+                        if (distanceX <= attackRadius && distanceY <= attackRadius)
+                        {
+                            enemy.TakeDamage(10);
+                            Debug.Log("Attacking enemy at (" + enemy.positionX + ", " + enemy.positionY + ")");
+                        }
+                    }
                 }
             }
             else
@@ -91,9 +112,7 @@ namespace Searching
                         minIndex = j;
                     }
                 }
-                var temp = enemies[i];
-                enemies[i] = enemies[minIndex];
-                enemies[minIndex] = temp;
+                (enemies[i], enemies[minIndex]) = (enemies[minIndex], enemies[i]);
             }
             return enemies;
         }

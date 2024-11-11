@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Searching;
 using UnityEngine;
 
 namespace Tree
@@ -49,6 +50,7 @@ namespace Tree
 
         public void Update()
         {
+
             if (Input.GetKeyDown(KeyCode.P))
             {
                 attackSkillTree.rootSkill.PrintSkillTreeHierarchy("");
@@ -56,23 +58,23 @@ namespace Tree
                 Debug.Log("====================================");
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 attack.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 fireStorm.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            if (Input.GetKeyDown(KeyCode.T))
             {
                 fireBall.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            if (Input.GetKeyDown(KeyCode.Y))
             {
                 fireBlast.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha5))
+            if (Input.GetKeyDown(KeyCode.U))
             {
                 fireWave.Unlock();
             }
