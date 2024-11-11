@@ -39,6 +39,14 @@ namespace Searching
             {
                 UseFireStorm();
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UseEarthQuake();
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                UseWaterFallDance();
+            }
         }
 
         public void Attack(OOPEnemy _enemy)
@@ -61,6 +69,7 @@ namespace Searching
             {
                 inventory.UseItem("FireStorm");
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
+                List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
                 
                 /*int count = 3;
                 if (count > enemies.Length)
@@ -83,18 +92,92 @@ namespace Searching
                     {
                         int distanceX = Mathf.Abs(enemy.positionX - playerX);
                         int distanceY = Mathf.Abs(enemy.positionY - playerY);
-                        
+
                         if (distanceX <= attackRadius && distanceY <= attackRadius)
                         {
                             enemy.TakeDamage(10);
-                            Debug.Log("Attacking enemy at (" + enemy.positionX + ", " + enemy.positionY + ")");
+                            hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
                         }
                     }
                 }
+                
+                mapGenerator.TriggerFireStorm(hitEnemyPositions.ToArray());
             }
             else
             {
                 Debug.Log("No FireStorm in inventory");
+            }
+        }
+
+        public void UseWaterFallDance()
+        {
+            if (inventory.numberOfItem("WaterFallDance") > 0)
+            {
+                inventory.UseItem("WaterFallDance");
+                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
+                List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
+                
+                int attackRadius = 1;
+                
+                int playerX = this.positionX;
+                int playerY = this.positionY;
+                
+                foreach (Character enemy in enemies)
+                {
+                    if (enemy != null)
+                    {
+                        int distanceX = Mathf.Abs(enemy.positionX - playerX);
+                        int distanceY = Mathf.Abs(enemy.positionY - playerY);
+
+                        if (distanceX <= attackRadius && distanceY <= attackRadius)
+                        {
+                            enemy.TakeDamage(10);
+                            hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
+                        }
+                    }
+                }
+                
+                mapGenerator.TriggerWaterFallDance(hitEnemyPositions.ToArray());
+            }
+            else
+            {
+                Debug.Log("No WaterFallDance in inventory");
+            }
+        }
+
+        public void UseEarthQuake()
+        {
+            if (inventory.numberOfItem("EarthQuake") > 0)
+            {
+                inventory.UseItem("EarthQuake");
+                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
+                List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
+                
+                int attackRadius = 1;
+                
+                int playerX = this.positionX;
+                int playerY = this.positionY;
+                
+                foreach (Character enemy in enemies)
+                {
+                    if (enemy != null)
+                    {
+                        int distanceX = Mathf.Abs(enemy.positionX - playerX);
+                        int distanceY = Mathf.Abs(enemy.positionY - playerY);
+
+                        if (distanceX <= attackRadius && distanceY <= attackRadius)
+                        {
+                            enemy.TakeDamage(10);
+                            hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
+                        }
+                    }
+                }
+                
+                mapGenerator.TriggerEarthQuakeEffect(hitEnemyPositions.ToArray());
+            }
+            else
+            {
+                Debug.Log("No EarthQuake in inventory");
             }
         }
 

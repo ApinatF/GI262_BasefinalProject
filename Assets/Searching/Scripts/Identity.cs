@@ -11,6 +11,7 @@ namespace Searching
         public string Name;
         public int positionX;
         public int positionY;
+        
 
         public OOPMapGenerator mapGenerator;
 

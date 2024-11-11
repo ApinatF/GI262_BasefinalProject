@@ -1070,6 +1070,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: itemFireStormCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: itemEarthQuakeCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: keysPrefab.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1084,6 +1092,14 @@ PrefabInstance:
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: floorsPrefab.Array.size
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: itemWaterFallDacneCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: itemWaterFallDanceCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: keysPrefab.Array.data[0]
@@ -1130,6 +1146,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 110520, guid: e797d0509f378e74ca179da99e1f671a, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: fireStormPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: floorsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 106160, guid: 038998774947c4a8fa170d5b4492a7dd, type: 3}
@@ -1166,6 +1186,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: earthQuakePrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: fireStormPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 3589931770580008107, guid: 348040bcbec648a42968b339c2112920, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: fireStormPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2545395700442326243, guid: b0df41f2d67b37a4796cc2e748019051, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: demonWallsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 110520, guid: a0e1cbb2ed4ebe2438ddc619ee2fef83, type: 3}
@@ -1173,6 +1205,42 @@ PrefabInstance:
       propertyPath: demonWallsPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 110520, guid: 0c33ad76486a7d9468826fa09c7942d0, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: earthQuakePrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 3589931770580008107, guid: 7ebebb234c9d5a744ae3e4c076a924de, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: waterFallDancePrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: fireStormPrefabEffect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: earthQuakePrefabEffect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: waterFallDancePrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 3589931770580008107, guid: e5b628268c89cc54e853ec21707a1224, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: fireStormPrefabEffect.Array.data[0]
+      value: 
+      objectReference: {fileID: 2545395700442326243, guid: b0df41f2d67b37a4796cc2e748019051, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: earthQuakePrefabEffect.Array.data[0]
+      value: 
+      objectReference: {fileID: 3233822655907476509, guid: 89f9970095339674a8342838b3b9221a, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: waterFallWaterPrefabEffect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: waterFallWaterPrefabEffect.Array.data[0]
+      value: 
+      objectReference: {fileID: 5023575791317429900, guid: 2e7005d1a2395e94b898215092dc53ef, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

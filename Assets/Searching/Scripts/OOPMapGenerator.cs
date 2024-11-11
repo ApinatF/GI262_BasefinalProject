@@ -27,6 +27,13 @@ namespace Searching
         public GameObject[] keysPrefab;
         public GameObject[] enemiesPrefab;
         public GameObject[] fireStormPrefab;
+        public GameObject[] waterFallDancePrefab;
+        public GameObject[] earthQuakePrefab;
+        
+        [Header("Set Effect Prefab")]
+        public GameObject[] fireStormPrefabEffect;
+        public GameObject[] waterFallWaterPrefabEffect;
+        public GameObject[] earthQuakePrefabEffect;
 
         [Header("Set Transform")]
         public Transform floorParent;
@@ -39,6 +46,8 @@ namespace Searching
         public int itemPotionCount;
         public int itemKeyCount;
         public int itemFireStormCount;
+        public int itemEarthQuakeCount;
+        public int itemWaterFallDanceCount;
         public int enemyCount;
 
         public int[,] mapdata;
@@ -46,6 +55,8 @@ namespace Searching
         public OOPWall[,] walls;
         public OOPItemPotion[,] potions;
         public OOPFireStormItem[,] fireStorms;
+        public OOPEarthQuake[,] earthQuakes;
+        public OOPWaterFallDance[,] waterFallDances;
         public OOPItemKey[,] keys;
         public OOPEnemy[,] enemies;
 
@@ -60,6 +71,8 @@ namespace Searching
         public int key = 5;
         public int enemy = 6;
         public int fireStorm = 7;
+        public int waterFallDance = 8;
+        public int earthQuake = 9;
 
         // Start is called before the first frame update
         void Start()
@@ -156,6 +169,34 @@ namespace Searching
                     count++;
                 }
             }
+            
+            
+            earthQuakes = new OOPEarthQuake[X, Y];
+            count = 0;
+            while (count < itemEarthQuakeCount)
+            {
+                int x = Random.Range(0, X);
+                int y = Random.Range(0, Y);
+                if (mapdata[x, y] == empty)
+                {
+                    PlaceEarthQuake(x, y);
+                    count++;
+                }
+            }
+            
+            waterFallDances = new OOPWaterFallDance[X, Y];
+            count = 0;
+            while (count < itemWaterFallDanceCount)
+            {
+                int x = Random.Range(0, X);
+                int y = Random.Range(0, Y);
+                if (mapdata[x, y] == empty)
+                {
+                    PlaceWaterFallDance(x, y);
+                    count++;
+                }
+            }
+            
 
             mapdata[X - 1, Y - 1] = exit;
             Exit.transform.position = new Vector3(X - 1, Y - 1, 0);
@@ -179,6 +220,7 @@ namespace Searching
             potions[x, y].mapGenerator = this;
             obj.name = $"Item_{potions[x, y].Name} {x}, {y}";
         }
+        
 
         public void PlaceKey(int x, int y)
         {
@@ -231,6 +273,86 @@ namespace Searching
             fireStorms[x, y].mapGenerator = this;
             obj.name = $"FireStorm_{fireStorms[x, y].Name} {x}, {y}";
         }
+        
+        public void ShowFireStormEffect(Vector3 position)
+        {
+            int r = Random.Range(0, fireStormPrefabEffect.Length);
+            GameObject fireStormEffect = Instantiate(fireStormPrefabEffect[r], position, Quaternion.identity);
+            fireStormEffect.transform.parent = floorParent;
+            Destroy(fireStormEffect, 1.5f);
+        }
+        
+        public void TriggerFireStorm(Vector2Int[] enemyPositions)
+        {
+            foreach (var pos in enemyPositions)
+            {
+                Vector3 effectPosition = new Vector3(pos.x, pos.y, 0);
+                ShowFireStormEffect(effectPosition);
+            }
+        }
+        
+        public void ShowWaterFallEffectEffect(Vector3 position)
+        {
+            int r = Random.Range(0, waterFallWaterPrefabEffect.Length);
+            GameObject waterfallEffect = Instantiate(waterFallWaterPrefabEffect[r], position, Quaternion.identity);
+            waterfallEffect.transform.parent = floorParent;
+            Destroy(waterfallEffect, 1.5f);
+        }
+        
+        public void TriggerWaterFallDance(Vector2Int[] enemyPositions)
+        {
+            foreach (var pos in enemyPositions)
+            {
+                Vector3 effectPosition = new Vector3(pos.x, pos.y, 0);
+                ShowWaterFallEffectEffect(effectPosition);
+            }
+        }
+        
+        public void ShowEarthQuakeEffect(Vector3 position)
+        {
+            int r = Random.Range(0, earthQuakePrefabEffect.Length);
+            GameObject earthQuakeEffect = Instantiate(earthQuakePrefabEffect[r], position, Quaternion.identity);
+            earthQuakeEffect.transform.parent = floorParent;
+            Destroy(earthQuakeEffect, 1.5f);
+        }
+        
+        public void TriggerEarthQuakeEffect(Vector2Int[] enemyPositions)
+        {
+            foreach (var pos in enemyPositions)
+            {
+                Vector3 effectPosition = new Vector3(pos.x, pos.y, 0);
+                ShowEarthQuakeEffect(effectPosition);
+            }
+        }
+        
+        public void PlaceEarthQuake(int x, int y)
+        {
+            int e = Random.Range(0, earthQuakePrefab.Length);
+            GameObject obj = Instantiate(earthQuakePrefab[e], new Vector3(x, y, 0), Quaternion.identity);
+            obj.transform.parent = wallParent;
+            mapdata[x, y] = earthQuake;
+            earthQuakes[x, y] = obj.GetComponent<OOPEarthQuake>();
+            earthQuakes[x, y].positionX = x;
+            earthQuakes[x, y].positionY = y;
+            earthQuakes[x, y].mapGenerator = this;
+            obj.name = $"EarthQuake_{earthQuakes[x, y].Name} {x}, {y}";
+        }
+        
+        public void PlaceWaterFallDance(int x, int y)
+        {
+            int e = Random.Range(0, waterFallDancePrefab.Length);
+            GameObject obj = Instantiate(waterFallDancePrefab[e], new Vector3(x, y, 0), Quaternion.identity);
+            obj.transform.parent = wallParent;
+            mapdata[x, y] = waterFallDance;
+            waterFallDances[x, y] = obj.GetComponent<OOPWaterFallDance>();
+            waterFallDances[x, y].positionX = x;
+            waterFallDances[x, y].positionY = y;
+            waterFallDances[x, y].mapGenerator = this;
+            obj.name = $"WaterFallDance_{waterFallDances[x, y].Name} {x}, {y}";
+        }
+        
+
+
 
         public OOPEnemy[] GetEnemies()
         {

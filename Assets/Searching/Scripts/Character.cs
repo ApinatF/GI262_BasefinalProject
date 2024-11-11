@@ -77,6 +77,20 @@ namespace Searching
                     positionY = toY;
                     transform.position = new Vector3(positionX, positionY, 0);
                 }
+                else if (IsEarthQuake(toX, toY))
+                {
+                    mapGenerator.earthQuakes[toX, toY].Hit();
+                    positionX = toX;
+                    positionY = toY;
+                    transform.position = new Vector3(positionX, positionY, 0);
+                }
+                else if (IsWaterFallDance(toX, toY))
+                {
+                    mapGenerator.waterFallDances[toX, toY].Hit();
+                    positionX = toX;
+                    positionY = toY;
+                    transform.position = new Vector3(positionX, positionY, 0);
+                }
                 else if (IsEnemy(toX, toY))
                 {
                     mapGenerator.enemies[toX, toY].Hit();
@@ -126,6 +140,16 @@ namespace Searching
         {
             int mapData = mapGenerator.GetMapData(x, y);
             return mapData == mapGenerator.fireStorm;
+        }
+        public bool IsEarthQuake(int x, int y)
+        {
+            int mapData = mapGenerator.GetMapData(x, y);
+            return mapData == mapGenerator.earthQuake;
+        }
+        public bool IsWaterFallDance(int x, int y)
+        {
+            int mapData = mapGenerator.GetMapData(x, y);
+            return mapData == mapGenerator.waterFallDance;
         }
         public bool IsKey(int x, int y)
         {

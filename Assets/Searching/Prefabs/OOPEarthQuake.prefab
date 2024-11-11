@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2447033623608527496}
   - component: {fileID: 2166002622288339622}
-  - component: {fileID: 4113991319460823854}
+  - component: {fileID: -2609649577636293428}
   m_Layer: 0
-  m_Name: OOPFireStorm
+  m_Name: OOPEarthQuake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 615ecf391b0ba0b40a9c3882ac5e6afc, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.4783347, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4113991319460823854
+--- !u!114 &-2609649577636293428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,10 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3589931770580008107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4b9cbc266f3c54b9de68fc90664699, type: 3}
+  m_Script: {fileID: 11500000, guid: 31c41bfdd531dbc4c9643a62f63dbbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: FireStorm
+  Name: EarthQuake
   positionX: 0
   positionY: 0
   mapGenerator: {fileID: 0}

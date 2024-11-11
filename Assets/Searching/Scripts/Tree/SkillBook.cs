@@ -12,10 +12,14 @@ namespace Tree
 
         Skill attack;
         Skill fireStorm;
+        Skill waterFallDance;
+        Skill earthQuake;
+        
         Skill fireBall;
         Skill fireBlast;
         Skill fireWave;
         Skill fireExplosion;
+        
 
         public void Start()
         {
@@ -28,22 +32,30 @@ namespace Tree
             //             └── FireWave
             //                 └── FireExplosion
             #endregion
-
+            
+            
             attack = new Skill("Attack");
             attack.isAvailable = true;
-
             fireStorm = new Skill("FireStorm");
+            waterFallDance = new Skill("WaterFallDance");
+            earthQuake = new Skill("EarthQuake");
+            
+            
             fireBall = new Skill("FireBall");
             fireBlast = new Skill("FireBlast");
             fireWave = new Skill("FireWave");
             fireExplosion = new Skill("FireExplosion");
 
             attack.nextSkills.Add(fireStorm);
+            waterFallDance.nextSkills.Add(waterFallDance);
+            earthQuake.nextSkills.Add(earthQuake);
+            
+            
             fireStorm.nextSkills.Add(fireBlast);
             fireStorm.nextSkills.Add(fireBall);
             fireBall.nextSkills.Add(fireWave);
             fireWave.nextSkills.Add(fireExplosion);
-
+        
 
             this.attackSkillTree = new SkillTree(attack);
         }

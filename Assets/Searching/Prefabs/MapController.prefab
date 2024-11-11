@@ -176,6 +176,10 @@ MonoBehaviour:
   - {fileID: 110520, guid: 2a26a0f7e63d0404389b667e79c6911a, type: 3}
   fireStormPrefab:
   - {fileID: 3589931770580008107, guid: 348040bcbec648a42968b339c2112920, type: 3}
+  waterFallDancePrefab:
+  - {fileID: 3589931770580008107, guid: a0d4212594598274685ff59d404262d7, type: 3}
+  earthQuakePrefab:
+  - {fileID: 3589931770580008107, guid: 7ebebb234c9d5a744ae3e4c076a924de, type: 3}
   floorParent: {fileID: 2017854439703414493}
   wallParent: {fileID: 5733433177445407064}
   itemPotionParent: {fileID: 962238967185088404}
@@ -194,6 +198,8 @@ MonoBehaviour:
   key: 5
   enemy: 6
   fireStorm: 7
+  waterFallDance: 8
+  earthQuake: 9
 --- !u!1 &7680843978735096706
 GameObject:
   m_ObjectHideFlags: 0
