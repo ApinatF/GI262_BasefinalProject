@@ -15,13 +15,31 @@ namespace Searching
         public override void Hit()
         {
             mapGenerator.player.Attack(this);
+            mapGenerator.player.FireAttack(this);
             this.Attack(mapGenerator.player);
+            this.FireAttack(mapGenerator.player);
         }
 
         public void Attack(OOPPlayer _player)
         {
             _player.TakeDamage(AttackPoint);
         }
+
+        public void FireAttack(OOPPlayer _player)
+        {
+            _player.TakeFireDamage(AttackPoint);
+        }
+        
+        public void EarthAttack(OOPPlayer _player)
+        {
+            _player.TakeEarthDamage(AttackPoint);
+        }
+        
+        public void WaterAttack(OOPPlayer _player)
+        {
+            _player.TakeWaterDamage(AttackPoint);
+        }
+        
 
         protected override void CheckDead()
         {

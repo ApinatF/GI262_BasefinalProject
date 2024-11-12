@@ -54,6 +54,14 @@ namespace Searching
             _enemy.TakeDamage(AttackPoint);
         }
 
+        public void FireAttack(OOPEnemy _enemy)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _enemy.TakeFireDamage(AttackPoint);
+            }
+        }
+
         protected override void CheckDead()
         {
             base.CheckDead();
@@ -95,7 +103,7 @@ namespace Searching
 
                         if (distanceX <= attackRadius && distanceY <= attackRadius)
                         {
-                            enemy.TakeDamage(10);
+                            enemy.TakeFireDamage(5);
                             hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
                         }
                     }
@@ -131,7 +139,7 @@ namespace Searching
 
                         if (distanceX <= attackRadius && distanceY <= attackRadius)
                         {
-                            enemy.TakeDamage(10);
+                            enemy.TakeWaterDamage(10);
                             hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
                         }
                     }

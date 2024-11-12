@@ -167,10 +167,16 @@ namespace Searching
             return mapData == mapGenerator.exit;
         }
 
+        /*public bool IsEnemyFacedWall(int x, int y)
+        {
+            int mapData = mapGenerator.GetMapData(x, y);
+            
+        }*/
+
         public virtual void TakeDamage(int Damage)
         {
             energy -= Damage;
-            Debug.Log(Name + " Current Energy : " + energy);
+            Debug.Log(Name + " Take Normal Attack : " + energy);
             CheckDead();
         }
         public virtual void TakeDamage(int Damage, bool freeze)
@@ -182,6 +188,38 @@ namespace Searching
             Debug.Log("you is Freeze");
             CheckDead();
         }
+
+        public virtual void TakeFireDamage(int FDamage)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                energy -= FDamage;
+                Debug.Log(Name + " Take Fire Damage : " + energy);
+                CheckDead();
+            }
+        }
+        
+        public virtual void TakeEarthDamage(int EDamage)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                energy -= EDamage;
+                Debug.Log(Name + " Take Earth Damage : " + energy);
+                CheckDead();
+            }
+        }
+        
+        public virtual void TakeWaterDamage(int WDamage)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                energy -= WDamage;
+                Debug.Log(Name + " Take Water Damage : " + energy);
+                CheckDead();
+            }
+        }
+        
+        
 
 
         public void Heal(int healPoint)
