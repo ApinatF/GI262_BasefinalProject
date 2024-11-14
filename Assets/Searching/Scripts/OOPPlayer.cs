@@ -10,18 +10,23 @@ namespace Searching
     public class OOPPlayer : Character
     {
         public Inventory inventory;
+        
+
 
         public void Start()
         {
             PrintInfo();
             GetRemainEnergy();
+            
         }
 
         public void Update()
         {
+            SetHeaith();
+            
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Move(Vector2.up);
+                Move(Vector2.up );
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -214,6 +219,8 @@ namespace Searching
             Array.Sort(enemies, (a, b) => a.energy.CompareTo(b.energy));
             return enemies;
         }
+        
+        
 
     }
 

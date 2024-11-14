@@ -11,6 +11,8 @@ namespace Searching
     public class Character : Identity
     {
         [Header("Character")]
+        public float maxHeaith;
+        public float currentHeaith;
         public int energy;
         public int AttackPoint;
 
@@ -18,6 +20,11 @@ namespace Searching
         protected bool isFreeze;
 
         // Start is called before the first frame update
+        protected void Awake()
+        {
+            currentHeaith = maxHeaith;
+        }
+
         protected void GetRemainEnergy()
         {
             Debug.Log(Name + " : " + energy);
@@ -101,7 +108,8 @@ namespace Searching
                 positionX = toX;
                 positionY = toY;
                 transform.position = new Vector3(positionX, positionY, 0);
-                TakeDamage(1);
+                //TakeDamage(1);
+                TakeEnergy(1);
             }
 
             if (this is OOPPlayer)
@@ -173,11 +181,18 @@ namespace Searching
             
         }*/
 
-        public virtual void TakeDamage(int Damage)
+        public virtual void TakeDamage(int Damage) //energy -> currentHeaith
         {
-            energy -= Damage;
-            Debug.Log(Name + " Take Normal Attack : " + energy);
+            currentHeaith -= Damage;
+            Debug.Log(Name + " Take Normal Attack : " + currentHeaith);
             CheckDead();
+        }
+        
+        public virtual void TakeEnergy(int _Energy) //energy -> currentHeaith
+        {
+            energy -= _Energy;
+            Debug.Log(Name + " Take Normal Attack : " + energy);
+            //CheckDead();
         }
         public virtual void TakeDamage(int Damage, bool freeze)
         {
@@ -193,8 +208,8 @@ namespace Searching
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                energy -= FDamage;
-                Debug.Log(Name + " Take Fire Damage : " + energy);
+                currentHeaith -= FDamage;
+                Debug.Log(Name + " Take Fire Damage : " + currentHeaith);
                 CheckDead();
             }
         }
@@ -203,8 +218,8 @@ namespace Searching
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                energy -= EDamage;
-                Debug.Log(Name + " Take Earth Damage : " + energy);
+                currentHeaith -= EDamage;
+                Debug.Log(Name + " Take Earth Damage : " + currentHeaith);
                 CheckDead();
             }
         }
@@ -213,14 +228,13 @@ namespace Searching
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                energy -= WDamage;
-                Debug.Log(Name + " Take Water Damage : " + energy);
+                currentHeaith -= WDamage;
+                Debug.Log(Name + " Take Water Damage : " + currentHeaith);
                 CheckDead();
             }
         }
-        
-        
 
+        
 
         public void Heal(int healPoint)
         {
@@ -232,17 +246,27 @@ namespace Searching
 
         public void Heal(int healPoint, bool Bonuse)
         {
-            energy += healPoint * (Bonuse ? 2 : 1);
-            Debug.Log("Current Energy : " + energy);
+            currentHeaith += healPoint * (Bonuse ? 2 : 1);
+            Debug.Log("Current Energy : " + currentHeaith);
         }
 
         protected virtual void CheckDead()
         {
-            if (energy <= 0)
+            if (currentHeaith <= 0)
             {
                 Destroy(gameObject);
             }
         }
+        
+        protected void SetHeaith()
+        {
+            if (currentHeaith > maxHeaith)
+            {
+                currentHeaith = maxHeaith;
+            }
+        }
+
+        
 
         
     }

@@ -44,7 +44,7 @@ namespace Searching
         protected override void CheckDead()
         {
             base.CheckDead();
-            if (energy <= 0)
+            if (currentHeaith <= 0)
             {
                 mapGenerator.enemies[positionX, positionY] = null;
                 mapGenerator.mapdata[positionX, positionY] = mapGenerator.empty;

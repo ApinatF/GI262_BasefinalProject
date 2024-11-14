@@ -17,6 +17,7 @@ namespace Tree
         {
             this.name = name;
             isUnlocked = false;
+            isAvailable = false;
             nextSkills = new List<Skill>();
         }
 

@@ -67,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -145,7 +148,6 @@ PolygonCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309612737}
   m_Enabled: 1
-  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -169,8 +171,7 @@ PolygonCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.3469515, y: 3.45226, z: -10}
+  m_LocalPosition: {x: 7.3412, y: 3.4523396, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1101,47 +1102,47 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'keysPrefab.Array.data[0]'
+      propertyPath: keysPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 1125293129051393862, guid: 00444c8a163332f46b6e50904ed9a7ab, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'itemsPrefab.Array.data[0]'
+      propertyPath: itemsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 6476303242912763235, guid: 86926da40248a04478456d108c6fae6d, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'itemsPrefab.Array.data[1]'
+      propertyPath: itemsPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 6476303242912763235, guid: 76f2f38c664723b42aea03f157bcc7ae, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[0]'
+      propertyPath: wallsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 110520, guid: b1361c167057d93419e387f0e521b453, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[1]'
+      propertyPath: wallsPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 110520, guid: 160d1ca5bdb308248a5ee74ad266bb23, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[2]'
+      propertyPath: wallsPrefab.Array.data[2]
       value: 
       objectReference: {fileID: 110520, guid: 20969559de7d2744bb44998e99ce9982, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[3]'
+      propertyPath: wallsPrefab.Array.data[3]
       value: 
       objectReference: {fileID: 110520, guid: 7cd8a1715bfab6c4d90c0fab66f9a28d, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[4]'
+      propertyPath: wallsPrefab.Array.data[4]
       value: 
       objectReference: {fileID: 110520, guid: 5d04ed77d9b2f084d95198c3d5054934, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[5]'
+      propertyPath: wallsPrefab.Array.data[5]
       value: 
       objectReference: {fileID: 110520, guid: 41b95ddc38b31c54494887bffe170189, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[6]'
+      propertyPath: wallsPrefab.Array.data[6]
       value: 
       objectReference: {fileID: 110520, guid: 8e340b745bf3d534d97def82977de0ad, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'wallsPrefab.Array.data[7]'
+      propertyPath: wallsPrefab.Array.data[7]
       value: 
       objectReference: {fileID: 110520, guid: e797d0509f378e74ca179da99e1f671a, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
@@ -1149,35 +1150,35 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[0]'
+      propertyPath: floorsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 106160, guid: 038998774947c4a8fa170d5b4492a7dd, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[1]'
+      propertyPath: floorsPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 137908, guid: 41775b29042354678bcd58bb1a75871e, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[2]'
+      propertyPath: floorsPrefab.Array.data[2]
       value: 
       objectReference: {fileID: 125636, guid: 74398dca0c1f64f34aab8ba7bdb6c527, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[3]'
+      propertyPath: floorsPrefab.Array.data[3]
       value: 
       objectReference: {fileID: 177044, guid: ed4c829589732490894350b134530050, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[4]'
+      propertyPath: floorsPrefab.Array.data[4]
       value: 
       objectReference: {fileID: 109612, guid: 04993e7a7b0514f0c8857ff106529ce1, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[5]'
+      propertyPath: floorsPrefab.Array.data[5]
       value: 
       objectReference: {fileID: 127736, guid: 4cdf8ac85eff446d0a8fefbdc8c6569f, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[6]'
+      propertyPath: floorsPrefab.Array.data[6]
       value: 
       objectReference: {fileID: 110520, guid: 5535fd6cd705e4a79a1d5a4f114de5dc, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'floorsPrefab.Array.data[7]'
+      propertyPath: floorsPrefab.Array.data[7]
       value: 
       objectReference: {fileID: 110520, guid: c18e9692903814865aa9a855aaa66df5, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
@@ -1189,23 +1190,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'fireStormPrefab.Array.data[0]'
+      propertyPath: fireStormPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 3589931770580008107, guid: 348040bcbec648a42968b339c2112920, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'fireStormPrefab.Array.data[1]'
+      propertyPath: fireStormPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 2545395700442326243, guid: b0df41f2d67b37a4796cc2e748019051, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'demonWallsPrefab.Array.data[0]'
+      propertyPath: demonWallsPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 110520, guid: a0e1cbb2ed4ebe2438ddc619ee2fef83, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'demonWallsPrefab.Array.data[1]'
+      propertyPath: demonWallsPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 110520, guid: 0c33ad76486a7d9468826fa09c7942d0, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'earthQuakePrefab.Array.data[0]'
+      propertyPath: earthQuakePrefab.Array.data[0]
       value: 
       objectReference: {fileID: 3589931770580008107, guid: 7ebebb234c9d5a744ae3e4c076a924de, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
@@ -1221,15 +1222,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'waterFallDancePrefab.Array.data[0]'
+      propertyPath: waterFallDancePrefab.Array.data[0]
       value: 
       objectReference: {fileID: 3589931770580008107, guid: e5b628268c89cc54e853ec21707a1224, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'fireStormPrefabEffect.Array.data[0]'
+      propertyPath: fireStormPrefabEffect.Array.data[0]
       value: 
       objectReference: {fileID: 2545395700442326243, guid: b0df41f2d67b37a4796cc2e748019051, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'earthQuakePrefabEffect.Array.data[0]'
+      propertyPath: earthQuakePrefabEffect.Array.data[0]
       value: 
       objectReference: {fileID: 3233822655907476509, guid: 89f9970095339674a8342838b3b9221a, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
@@ -1237,7 +1238,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
-      propertyPath: 'waterFallWaterPrefabEffect.Array.data[0]'
+      propertyPath: waterFallWaterPrefabEffect.Array.data[0]
       value: 
       objectReference: {fileID: 5023575791317429900, guid: 2e7005d1a2395e94b898215092dc53ef, type: 3}
     m_RemovedComponents: []
@@ -1305,6 +1306,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 418901505}
+    - target: {fileID: 5615206909734415387, guid: 4c033ef69eb269849bab9de975c465ed, type: 3}
+      propertyPath: maxHeaith
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5615206909734415387, guid: 4c033ef69eb269849bab9de975c465ed, type: 3}
       propertyPath: mapGenerator
       value: 
