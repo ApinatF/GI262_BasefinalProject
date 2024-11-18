@@ -8,36 +8,27 @@ using TMPro;
 
 public class Gamemanager : MonoBehaviour
 {
+    public static Gamemanager instance;
 
     private float hp;
     private float sp;
     public TextMeshProUGUI energyUi;
     public TextMeshProUGUI healthUi;
-    // Start is called before the first frame update
-    void Start()
-    {
-       /* GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            OOPPlayer oopPlayer = playerObj.GetComponent<OOPPlayer>();
-            hp = oopPlayer.currentHeaith;
-        }
-        //CoinPointUi.text = $"= {curCoins.ToString()}";
+    public TextMeshProUGUI TokenUi;
     
-        healthUi.text = $"= {hp.ToString()}"; */
+    public float ExpPoint = 0f;
+    public float skillsToken = 0f;
+    
+    
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if (instance == null) instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            OOPPlayer oopPlayer = playerObj.GetComponent<OOPPlayer>();
-            hp = oopPlayer.currentHeaith;
-            
-            healthUi.text = $"= {hp.ToString()}";
-        }*/
         SetplayerUI();
     }
 
@@ -49,11 +40,24 @@ public class Gamemanager : MonoBehaviour
             OOPPlayer oopPlayer = playerObj.GetComponent<OOPPlayer>();
             hp = oopPlayer.currentHealth;
             sp = oopPlayer.energy;
-
-
         }
+        
+        
+        
         energyUi.text = $"SP= {sp.ToString()}";
     
         healthUi.text = $"HP= {hp.ToString()}";
+
+        TokenUi.text = $"Token ={skillsToken.ToString()}";
+    }
+    
+    public void Gettoken(float exp)
+    {
+        ExpPoint += exp;
+        if (ExpPoint >= 20)
+        {
+            skillsToken += 1f;
+            ExpPoint = 0;
+        }
     }
 }

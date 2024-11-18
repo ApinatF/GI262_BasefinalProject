@@ -67,6 +67,7 @@ namespace Searching
                 _enemy.TakeFireDamage(AttackPoint);
             }
         }
+        
 
         protected override void CheckDead()
         {

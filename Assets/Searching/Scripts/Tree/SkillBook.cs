@@ -19,13 +19,13 @@ namespace Tree
         public Skill waterFallDance;
         Skill earthQuake;
         
-        Skill fireBall;
-        Skill fireBlast;
-        Skill fireWave;
-        Skill fireExplosion;
+        Skill fireStormPlus;
+        Skill waterFallDancePlus;
+        Skill earthQuakePlus;
+        //Skill fireExplosion;
 
         public SkillTree survivalSKillltree;
-        Skill adrenalinbe; //root
+        Skill baseSurvival; //root
         
         Skill attackboost;
         Skill attackboostplus;
@@ -33,8 +33,6 @@ namespace Tree
         Skill healthboost;
         Skill healthboostplus;
         
-        
-
         Skill charge;
 
         private void Awake()
@@ -46,15 +44,14 @@ namespace Tree
         public void Start()
         {
             #region Depicting the skill tree
-            // build Elemen skill tree
-            // └── Attack
+            // build Element skill tree
+            // └── Base Element
             //     └── FireStorm
-            //     |       ├── FireBlast
-            //     |       └── FireBall
-            //     |           └── FireWave
-            //     |               └── FireExplosion
+            //            └── 
             //     └── WaterFallDance
+            //            └── 
             //     └── EarthQuake
+            //             └── 
             #endregion
             
             
@@ -66,58 +63,48 @@ namespace Tree
             earthQuake = new Skill("EarthQuake");
             
             
-            fireBall = new Skill("FireBall");
-            fireBlast = new Skill("FireBlast");
-            fireWave = new Skill("FireWave");
-            fireExplosion = new Skill("FireExplosion");
+            fireStormPlus = new Skill("FireStormPlus");
+            waterFallDancePlus = new Skill("WaterFallDancePlus");
+            earthQuakePlus = new Skill("EarthQuakePlus");
 
             attack.nextSkills.Add(fireStorm);
             attack.nextSkills.Add(waterFallDance);
             attack.nextSkills.Add(earthQuake);
             
+            fireStorm.nextSkills.Add(fireStormPlus);
+            waterFallDance.nextSkills.Add(waterFallDancePlus);
+            earthQuake.nextSkills.Add(earthQuakePlus);
             
-            fireStorm.nextSkills.Add(fireBlast);
-            fireStorm.nextSkills.Add(fireBall);
-            fireBall.nextSkills.Add(fireWave);
-            fireWave.nextSkills.Add(fireExplosion);
+            
             
             attack.Unlock();
             this.elementSkillTree = new SkillTree(attack);
             //-------------------------------------------------------------------------------
             
             #region Depicting the skill tree
-            // build skill tree
-            // └── Adrenalinbe
+            // build skill tree 
+            // └── BaseSurvival
             //     └── AttackBoost
-            //     |       ├── AttackBoostPlus
-            //     |       └── 
-            //     └── HealthBoost;
-            //     |       ├── HealthBoostPlus
-            //     └── Charge;
+            //     └── HealthBoost
+            
             #endregion
-            adrenalinbe = new Skill("Adrenaline");
-            adrenalinbe.isAvailable = true;
+            baseSurvival = new Skill("BaseSurvival");
+            baseSurvival.isAvailable = true;
             
             healthboost = new Skill("HealthBoost");
-            healthboostplus = new Skill("HealthBoostPlus");
+            
             
             attackboost = new Skill("AttackBoost");
-            attackboostplus = new Skill("Attackboostplus");
-            charge = new Skill("Charge");
             
 
-            adrenalinbe.nextSkills.Add(attackboost);
-            adrenalinbe.nextSkills.Add(healthboost);
-            adrenalinbe.nextSkills.Add(charge);
+            baseSurvival.nextSkills.Add(attackboost);
+            baseSurvival.nextSkills.Add(healthboost);
             
             
-            attackboost.nextSkills.Add(attackboostplus);
-            healthboost.nextSkills.Add(healthboostplus);
-            
-            adrenalinbe.Unlock();
+            baseSurvival.Unlock();
         
 
-            this.survivalSKillltree = new SkillTree(adrenalinbe);
+            this.survivalSKillltree = new SkillTree(baseSurvival);
         }
 
         public void Update()
@@ -147,15 +134,15 @@ namespace Tree
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                fireBall.Unlock();
+                fireStormPlus.Unlock();
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                fireBlast.Unlock();
+                waterFallDancePlus.Unlock();
             }
             if (Input.GetKeyDown(KeyCode.U))
             {
-                fireWave.Unlock();
+                earthQuakePlus.Unlock();
             }
             
             ////
@@ -165,6 +152,7 @@ namespace Tree
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                //Gamemanager.instance.skillsToken -= 1f;
                 waterFallDance.Unlock();
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))

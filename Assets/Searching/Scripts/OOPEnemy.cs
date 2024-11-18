@@ -43,6 +43,7 @@ namespace Searching
 
         protected override void CheckDead()
         {
+            Gamemanager.instance.Gettoken(10f);
             base.CheckDead();
             if (currentHealth <= 0)
             {

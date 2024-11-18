@@ -10,12 +10,14 @@ using static UnityEngine.EventSystems.EventTrigger;
 namespace Searching
 {
     public class Character : Identity
-    {
-        [FormerlySerializedAs("maxHeaith")] [Header("Character")]
+    { 
+        [Header("Character")]
         public float maxHealth;
-        [FormerlySerializedAs("currentHeaith")] public float currentHealth;
+        public float currentHealth;
         public int energy;
         public int AttackPoint;
+        
+        
 
         protected bool isAlive;
         protected bool isFreeze;
