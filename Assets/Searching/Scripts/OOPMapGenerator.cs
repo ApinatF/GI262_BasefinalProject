@@ -29,7 +29,7 @@ namespace Searching
         public GameObject[] fireStormPrefab;
         public GameObject[] waterFallDancePrefab;
         public GameObject[] earthQuakePrefab;
-        public GameObject[] confusedFruitPrefab;
+        //public GameObject[] confusedFruitPrefab;
         
         [Header("Set Effect Prefab")]
         public GameObject[] fireStormPrefabEffect;
@@ -50,13 +50,13 @@ namespace Searching
         public int itemEarthQuakeCount;
         public int itemWaterFallDanceCount;
         public int enemyCount;
-        public int confusedFruitCount;
+        //public int confusedFruitCount;
 
         public int[,] mapdata;
 
         public OOPWall[,] walls;
         public OOPItemPotion[,] potions;
-        public OOPconfusedFruit[,] confusedFruits;
+        //public OOPconfusedFruit[,] confusedFruits;
         public OOPFireStormItem[,] fireStorms;
         public OOPEarthQuake[,] earthQuakes;
         public OOPWaterFallDance[,] waterFallDances;
@@ -76,7 +76,7 @@ namespace Searching
         public int fireStorm = 7;
         public int waterFallDance = 8;
         public int earthQuake = 9;
-        public int pconfusedFruit = 10;
+        //public int pconfusedFruit = 10;
 
         // Start is called before the first frame update
         void Start()
@@ -201,7 +201,7 @@ namespace Searching
                 }
             }
 
-            confusedFruits = new OOPconfusedFruit[X, Y];
+            /*confusedFruits = new OOPconfusedFruit[X, Y];
             count = 0;
             while (count < itemPotionCount)
             {
@@ -212,7 +212,7 @@ namespace Searching
                     PlaceConfusedfruit(x, y);
                     count++;
                 }
-            }
+            }*/
             
 
             mapdata[X - 1, Y - 1] = exit;
@@ -238,7 +238,7 @@ namespace Searching
             obj.name = $"Item_{potions[x, y].Name} {x}, {y}";
         }
         
-        public void PlaceConfusedfruit(int x, int y)
+        /*public void PlaceConfusedfruit(int x, int y)
         {
             int r = Random.Range(0, itemsPrefab.Length);
             GameObject obj = Instantiate(confusedFruitPrefab[r], new Vector3(x, y, 0), Quaternion.identity);
@@ -249,7 +249,7 @@ namespace Searching
             potions[x, y].positionY = y;
             potions[x, y].mapGenerator = this;
             obj.name = $"Item_{potions[x, y].Name} {x}, {y}";
-        }
+        }*/
         
 
         public void PlaceKey(int x, int y)

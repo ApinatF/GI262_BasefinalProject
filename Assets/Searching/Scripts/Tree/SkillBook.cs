@@ -27,10 +27,10 @@ namespace Tree
         public SkillTree survivalSKillltree;
         Skill baseSurvival; //root
         
-        Skill attackboost;
+        Skill passiveEnergy;
         Skill attackboostplus;
         
-        Skill healthboost;
+        Skill activeEnergy;
         Skill healthboostplus;
         
         Skill charge;
@@ -47,11 +47,11 @@ namespace Tree
             // build Element skill tree
             // └── Base Element
             //     └── FireStorm
-            //            └── 
+            //            └── FireStormPlus
             //     └── WaterFallDance
-            //            └── 
+            //            └── WaterFallDancePlus
             //     └── EarthQuake
-            //             └── 
+            //             └── EarthQuakePlus
             #endregion
             
             
@@ -84,21 +84,21 @@ namespace Tree
             #region Depicting the skill tree
             // build skill tree 
             // └── BaseSurvival
-            //     └── AttackBoost
-            //     └── HealthBoost
+            //     └── Active energy
+            //     └── Passive energy
             
             #endregion
             baseSurvival = new Skill("BaseSurvival");
             baseSurvival.isAvailable = true;
             
-            healthboost = new Skill("HealthBoost");
+            activeEnergy = new Skill("ActiveEnergy");
             
             
-            attackboost = new Skill("AttackBoost");
+            passiveEnergy = new Skill("PassiveEnergy");
             
 
-            baseSurvival.nextSkills.Add(attackboost);
-            baseSurvival.nextSkills.Add(healthboost);
+            baseSurvival.nextSkills.Add(activeEnergy);
+            baseSurvival.nextSkills.Add(passiveEnergy);
             
             
             baseSurvival.Unlock();

@@ -398,7 +398,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.3525352, y: 3.45217, z: -10}
+  m_LocalPosition: {x: 7.349576, y: 3.45222, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1675,7 +1675,7 @@ PrefabInstance:
       objectReference: {fileID: 2142152727}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: enemyCount
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: itemKeyCount
@@ -1843,6 +1843,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: confusedFruitPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 6476303242912763235, guid: d9ceae4db3b75124d92521988c0404a9, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: confusedFruitPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 6476303242912763235, guid: d9ceae4db3b75124d92521988c0404a9, type: 3}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: confusedFruitPrefab.Array.data[2]
       value: 
       objectReference: {fileID: 6476303242912763235, guid: d9ceae4db3b75124d92521988c0404a9, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
