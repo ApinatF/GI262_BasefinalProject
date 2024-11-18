@@ -108,7 +108,7 @@ namespace Searching
 
                         if (distanceX <= attackRadius && distanceY <= attackRadius)
                         {
-                            enemy.TakeFireDamage(5);
+                            enemy.TakeFireDamage(10);
                             hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
                         }
                     }
@@ -124,7 +124,7 @@ namespace Searching
 
         public void UseWaterFallDance()
         {
-            if (inventory.numberOfItem("WaterFallDance") > 0)
+            if (inventory.numberOfItem("WaterFallDance") > 0 )
             {
                 inventory.UseItem("WaterFallDance");
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();

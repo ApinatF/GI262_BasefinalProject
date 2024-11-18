@@ -206,32 +206,23 @@ namespace Searching
 
         public virtual void TakeFireDamage(int FDamage)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
                 currentHeaith -= FDamage;
                 Debug.Log(Name + " Take Fire Damage : " + currentHeaith);
                 CheckDead();
-            }
         }
         
         public virtual void TakeEarthDamage(int EDamage)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
                 currentHeaith -= EDamage;
                 Debug.Log(Name + " Take Earth Damage : " + currentHeaith);
                 CheckDead();
-            }
         }
         
         public virtual void TakeWaterDamage(int WDamage)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
                 currentHeaith -= WDamage;
                 Debug.Log(Name + " Take Water Damage : " + currentHeaith);
                 CheckDead();
-            }
         }
 
         

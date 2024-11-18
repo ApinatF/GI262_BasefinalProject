@@ -10,7 +10,8 @@ namespace Tree
     {
         public SkillTree attackSkillTree;
 
-        Skill attack;
+        Skill attack; // root
+        
         Skill fireStorm;
         Skill waterFallDance;
         Skill earthQuake;
@@ -19,6 +20,18 @@ namespace Tree
         Skill fireBlast;
         Skill fireWave;
         Skill fireExplosion;
+
+        public SkillTree survivalSKillltree;
+        Skill adrenalinbe; //root
+        
+        Skill attackBoost;
+        Skill attackboostplus;
+
+        Skill charge;
+        
+        
+        
+        
         
 
         public void Start()
@@ -36,6 +49,7 @@ namespace Tree
             
             attack = new Skill("Attack");
             attack.isAvailable = true;
+            
             fireStorm = new Skill("FireStorm");
             waterFallDance = new Skill("WaterFallDance");
             earthQuake = new Skill("EarthQuake");
@@ -47,14 +61,17 @@ namespace Tree
             fireExplosion = new Skill("FireExplosion");
 
             attack.nextSkills.Add(fireStorm);
-            waterFallDance.nextSkills.Add(waterFallDance);
-            earthQuake.nextSkills.Add(earthQuake);
+            attack.nextSkills.Add(waterFallDance);
+            attack.nextSkills.Add(earthQuake);
             
             
             fireStorm.nextSkills.Add(fireBlast);
             fireStorm.nextSkills.Add(fireBall);
             fireBall.nextSkills.Add(fireWave);
             fireWave.nextSkills.Add(fireExplosion);
+            
+            attack.Unlock();
+            //-------------------------------------------------------------------------------
         
 
             this.attackSkillTree = new SkillTree(attack);
@@ -65,12 +82,12 @@ namespace Tree
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-                attackSkillTree.rootSkill.PrintSkillTreeHierarchy("");
+                attackSkillTree.rootSkill.PrintSkillTreeHierarchy("AttackSkillTree");
                 attackSkillTree.rootSkill.PrintSkillTree();
                 Debug.Log("====================================");
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Keypad0))
             {
                 attack.Unlock();
             }
@@ -90,6 +107,21 @@ namespace Tree
             {
                 fireWave.Unlock();
             }
+            
+            ////
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                fireStorm.Unlock();
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                waterFallDance.Unlock();
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                earthQuake.Unlock();
+            }
+            
         }
     }
 
