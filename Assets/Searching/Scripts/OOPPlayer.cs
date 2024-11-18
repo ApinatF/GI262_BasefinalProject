@@ -10,6 +10,7 @@ namespace Searching
     public class OOPPlayer : Character
     {
         public Inventory inventory;
+        //public SkillBook skillBook;
         
 
 
@@ -75,12 +76,14 @@ namespace Searching
                 Debug.Log("Player is Dead");
             }
         }
+        //   Useskills
 
         public void UseFireStorm()
         {
-            if (inventory.numberOfItem("FireStorm") > 0)
+            if (inventory.numberOfItem("FireStorm") > 0 || SkillBook.instance.fireStorm.isUnlocked ) //inventory.numberOfItem("FireStorm") > 0 ||
             {
                 inventory.UseItem("FireStorm");
+                energy -= 2;//-------------
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
                 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -10,9 +11,9 @@ namespace Searching
 {
     public class Character : Identity
     {
-        [Header("Character")]
-        public float maxHeaith;
-        public float currentHeaith;
+        [FormerlySerializedAs("maxHeaith")] [Header("Character")]
+        public float maxHealth;
+        [FormerlySerializedAs("currentHeaith")] public float currentHealth;
         public int energy;
         public int AttackPoint;
 
@@ -22,7 +23,7 @@ namespace Searching
         // Start is called before the first frame update
         protected void Awake()
         {
-            currentHeaith = maxHeaith;
+            currentHealth = maxHealth;
         }
 
         protected void GetRemainEnergy()
@@ -183,8 +184,8 @@ namespace Searching
 
         public virtual void TakeDamage(int Damage) //energy -> currentHeaith
         {
-            currentHeaith -= Damage;
-            Debug.Log(Name + " Take Normal Attack : " + currentHeaith);
+            currentHealth -= Damage;
+            Debug.Log(Name + " Take Normal Attack : " + currentHealth);
             CheckDead();
         }
         
@@ -206,22 +207,22 @@ namespace Searching
 
         public virtual void TakeFireDamage(int FDamage)
         {
-                currentHeaith -= FDamage;
-                Debug.Log(Name + " Take Fire Damage : " + currentHeaith);
+                currentHealth -= FDamage;
+                Debug.Log(Name + " Take Fire Damage : " + currentHealth);
                 CheckDead();
         }
         
         public virtual void TakeEarthDamage(int EDamage)
         {
-                currentHeaith -= EDamage;
-                Debug.Log(Name + " Take Earth Damage : " + currentHeaith);
+                currentHealth -= EDamage;
+                Debug.Log(Name + " Take Earth Damage : " + currentHealth);
                 CheckDead();
         }
         
         public virtual void TakeWaterDamage(int WDamage)
         {
-                currentHeaith -= WDamage;
-                Debug.Log(Name + " Take Water Damage : " + currentHeaith);
+                currentHealth -= WDamage;
+                Debug.Log(Name + " Take Water Damage : " + currentHealth);
                 CheckDead();
         }
 
@@ -237,13 +238,13 @@ namespace Searching
 
         public void Heal(int healPoint, bool Bonuse)
         {
-            currentHeaith += healPoint * (Bonuse ? 2 : 1);
-            Debug.Log("Current Energy : " + currentHeaith);
+            currentHealth += healPoint * (Bonuse ? 2 : 1);
+            Debug.Log("Current Energy : " + currentHealth);
         }
 
         protected virtual void CheckDead()
         {
-            if (currentHeaith <= 0)
+            if (currentHealth <= 0)
             {
                 Destroy(gameObject);
             }
@@ -251,9 +252,9 @@ namespace Searching
         
         protected void SetHeaith()
         {
-            if (currentHeaith > maxHeaith)
+            if (currentHealth > maxHealth)
             {
-                currentHeaith = maxHeaith;
+                currentHealth = maxHealth;
             }
         }
 

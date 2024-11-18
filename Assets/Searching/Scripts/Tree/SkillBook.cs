@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Searching;
@@ -8,12 +9,14 @@ namespace Tree
 
     public class SkillBook : MonoBehaviour
     {
-        public SkillTree attackSkillTree;
+        public static SkillBook instance;
+        
+        public SkillTree elementSkillTree;
 
         Skill attack; // root
         
-        Skill fireStorm;
-        Skill waterFallDance;
+        public Skill fireStorm;
+        public Skill waterFallDance;
         Skill earthQuake;
         
         Skill fireBall;
@@ -24,26 +27,34 @@ namespace Tree
         public SkillTree survivalSKillltree;
         Skill adrenalinbe; //root
         
-        Skill attackBoost;
+        Skill attackboost;
         Skill attackboostplus;
+        
+        Skill healthboost;
+        Skill healthboostplus;
+        
+        
 
         Skill charge;
-        
-        
-        
-        
-        
+
+        private void Awake()
+        {
+            if (instance == null) instance = this;
+        }
+
 
         public void Start()
         {
             #region Depicting the skill tree
-            // build skill tree
+            // build Elemen skill tree
             // └── Attack
             //     └── FireStorm
-            //         ├── FireBlast
-            //         └── FireBall
-            //             └── FireWave
-            //                 └── FireExplosion
+            //     |       ├── FireBlast
+            //     |       └── FireBall
+            //     |           └── FireWave
+            //     |               └── FireExplosion
+            //     └── WaterFallDance
+            //     └── EarthQuake
             #endregion
             
             
@@ -71,10 +82,42 @@ namespace Tree
             fireWave.nextSkills.Add(fireExplosion);
             
             attack.Unlock();
+            this.elementSkillTree = new SkillTree(attack);
             //-------------------------------------------------------------------------------
+            
+            #region Depicting the skill tree
+            // build skill tree
+            // └── Adrenalinbe
+            //     └── AttackBoost
+            //     |       ├── AttackBoostPlus
+            //     |       └── 
+            //     └── HealthBoost;
+            //     |       ├── HealthBoostPlus
+            //     └── Charge;
+            #endregion
+            adrenalinbe = new Skill("Adrenaline");
+            adrenalinbe.isAvailable = true;
+            
+            healthboost = new Skill("HealthBoost");
+            healthboostplus = new Skill("HealthBoostPlus");
+            
+            attackboost = new Skill("AttackBoost");
+            attackboostplus = new Skill("Attackboostplus");
+            charge = new Skill("Charge");
+            
+
+            adrenalinbe.nextSkills.Add(attackboost);
+            adrenalinbe.nextSkills.Add(healthboost);
+            adrenalinbe.nextSkills.Add(charge);
+            
+            
+            attackboost.nextSkills.Add(attackboostplus);
+            healthboost.nextSkills.Add(healthboostplus);
+            
+            adrenalinbe.Unlock();
         
 
-            this.attackSkillTree = new SkillTree(attack);
+            this.survivalSKillltree = new SkillTree(adrenalinbe);
         }
 
         public void Update()
@@ -82,8 +125,15 @@ namespace Tree
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-                attackSkillTree.rootSkill.PrintSkillTreeHierarchy("AttackSkillTree");
-                attackSkillTree.rootSkill.PrintSkillTree();
+                elementSkillTree.rootSkill.PrintSkillTreeHierarchy("ElementSkillTree");
+                //elementSkillTree.rootSkill.PrintSkillTree();
+                Debug.Log("====================================");
+            }
+            
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                survivalSKillltree.rootSkill.PrintSkillTreeHierarchy("SurvivalSKillltree");
+                //survivalSKillltree.rootSkill.PrintSkillTree();
                 Debug.Log("====================================");
             }
 
@@ -109,15 +159,15 @@ namespace Tree
             }
             
             ////
-            if (Input.GetKeyDown(KeyCode.Keypad1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 fireStorm.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.Keypad2))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 waterFallDance.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.Keypad3))
+            if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 earthQuake.Unlock();
             }

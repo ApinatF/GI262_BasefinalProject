@@ -47,7 +47,7 @@ public class Gamemanager : MonoBehaviour
         if (playerObj != null)
         {
             OOPPlayer oopPlayer = playerObj.GetComponent<OOPPlayer>();
-            hp = oopPlayer.currentHeaith;
+            hp = oopPlayer.currentHealth;
             sp = oopPlayer.energy;
 
 
