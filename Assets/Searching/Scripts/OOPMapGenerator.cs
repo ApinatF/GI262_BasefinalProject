@@ -29,6 +29,7 @@ namespace Searching
         public GameObject[] fireStormPrefab;
         public GameObject[] waterFallDancePrefab;
         public GameObject[] earthQuakePrefab;
+        public GameObject[] ApplebuffPrefab;
         
         [Header("Set Effect Prefab")]
         public GameObject[] fireStormPrefabEffect;
@@ -48,6 +49,7 @@ namespace Searching
         public int itemFireStormCount;
         public int itemEarthQuakeCount;
         public int itemWaterFallDanceCount;
+        public int itemApplebuffCount;
         public int enemyCount;
 
         public int[,] mapdata;
@@ -59,6 +61,7 @@ namespace Searching
         public OOPWaterFallDance[,] waterFallDances;
         public OOPItemKey[,] keys;
         public OOPEnemy[,] enemies;
+        public OOPItemBuff[,] buffs;
 
         // block types ...
         [Header("Block Types")]
@@ -73,6 +76,7 @@ namespace Searching
         public int fireStorm = 7;
         public int waterFallDance = 8;
         public int earthQuake = 9;
+        public int Applebuff = 10;
 
         // Start is called before the first frame update
         void Start()
@@ -196,7 +200,19 @@ namespace Searching
                     count++;
                 }
             }
-            
+            buffs = new OOPItemBuff[X, Y];
+            count = 0;
+            while (count < itemApplebuffCount)
+            {
+                int x = Random.Range(0, X);
+                int y = Random.Range(0, Y);
+                if (mapdata[x, y] == empty)
+                {
+                    PlaceApplebuff(x, y);
+                    count++;
+                }
+            }
+
 
             mapdata[X - 1, Y - 1] = exit;
             Exit.transform.position = new Vector3(X - 1, Y - 1, 0);
@@ -350,7 +366,19 @@ namespace Searching
             waterFallDances[x, y].mapGenerator = this;
             obj.name = $"WaterFallDance_{waterFallDances[x, y].Name} {x}, {y}";
         }
-        
+        public void PlaceApplebuff(int x, int y)
+        {
+            int e = Random.Range(0, ApplebuffPrefab.Length);
+            GameObject obj = Instantiate(ApplebuffPrefab[e], new Vector3(x, y, 0), Quaternion.identity);
+            obj.transform.parent = wallParent;
+            mapdata[x, y] = Applebuff;
+            buffs[x, y] = obj.GetComponent<OOPItemBuff>();
+            buffs[x, y].positionX = x;
+            buffs[x, y].positionY = y;
+            buffs[x, y].mapGenerator = this;
+            obj.name = $"Applebuff_{buffs[x, y].Name} {x}, {y}";
+        }
+
 
 
 
