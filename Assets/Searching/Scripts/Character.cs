@@ -119,7 +119,7 @@ namespace Searching
                     positionX = toX;
                     positionY = toY;
                     transform.position = new Vector3(positionX, positionY, 0);
-                    TakeDamage(1); // เดินชนวัตถุที่ไม่สามารถเดินผ่านได้ จะเสียพลังชีวิต
+                    //TakeDamage(1); // เดินชนวัตถุที่ไม่สามารถเดินผ่านได้ จะเสียพลังชีวิต
                 }
 
                 if (this is OOPPlayer)

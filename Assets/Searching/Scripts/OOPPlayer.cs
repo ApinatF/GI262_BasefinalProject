@@ -27,18 +27,22 @@ namespace Searching
             
             if (Input.GetKeyDown(KeyCode.W))
             {
+                TakeDamage(1);
                 Move(Vector2.up );
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
+                TakeDamage(1);
                 Move(Vector2.down);
             }
             if (Input.GetKeyDown(KeyCode.A))
             {
+                TakeDamage(1);
                 Move(Vector2.left);
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
+                TakeDamage(1);
                 Move(Vector2.right);
             }
             if (Input.GetKeyDown(KeyCode.Space))
