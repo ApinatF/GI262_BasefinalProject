@@ -16,9 +16,7 @@ namespace Searching
         public float currentHealth;
         public int energy;
         public int AttackPoint;
-        
-        
-
+        public int extraMove = 0;
         protected bool isAlive;
         protected bool isFreeze;
 
@@ -41,90 +39,100 @@ namespace Searching
                 isFreeze = false;
                 return;
             }
-            int toX = (int)(positionX + direction.x);
-            int toY = (int)(positionY + direction.y);
-            int fromX = positionX;
-            int fromY = positionY;
-
-            if (HasPlacement(toX, toY))
+            int totalMoves = 1 + extraMove; 
+            for (int moveCount = 0; moveCount < totalMoves; moveCount++)
             {
-                if (IsDemonWalls(toX, toY))
-                {
-                    mapGenerator.walls[toX, toY].Hit();
-                }
-                else if (IsPotion(toX, toY))
-                {
-                    mapGenerator.potions[toX, toY].Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsPotionBonus(toX, toY))
-                {
-                    mapGenerator.potions[toX, toY].Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsExit(toX, toY))
-                {
-                    mapGenerator.Exit.Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsKey(toX, toY))
-                {
-                    mapGenerator.keys[toX, toY].Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsFireStorm(toX, toY))
-                {
-                    mapGenerator.fireStorms[toX, toY].Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsEarthQuake(toX, toY))
-                {
-                    mapGenerator.earthQuakes[toX, toY].Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsWaterFallDance(toX, toY))
-                {
-                    mapGenerator.waterFallDances[toX, toY].Hit();
-                    positionX = toX;
-                    positionY = toY;
-                    transform.position = new Vector3(positionX, positionY, 0);
-                }
-                else if (IsEnemy(toX, toY))
-                {
-                    mapGenerator.enemies[toX, toY].Hit();
-                }
-            }
-            else
-            {
-                positionX = toX;
-                positionY = toY;
-                transform.position = new Vector3(positionX, positionY, 0);
-                //TakeDamage(1);
-                TakeEnergy(1);
-            }
+                int toX = (int)(positionX + direction.x);
+                int toY = (int)(positionY + direction.y);
+                int fromX = positionX;
+                int fromY = positionY;
 
-            if (this is OOPPlayer)
-            {
-                if (fromX != positionX || fromY != positionY)
+                if (HasPlacement(toX, toY))
                 {
-                    mapGenerator.mapdata[fromX, fromY] = mapGenerator.empty;
-                    mapGenerator.mapdata[positionX, positionY] = mapGenerator.playerBlock;
-                    mapGenerator.MoveEnemies();
+                    if (IsDemonWalls(toX, toY))
+                    {
+                        mapGenerator.walls[toX, toY].Hit();
+                    }
+                    else if (IsPotion(toX, toY))
+                    {
+                        mapGenerator.potions[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsPotionBonus(toX, toY))
+                    {
+                        mapGenerator.potions[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsExit(toX, toY))
+                    {
+                        mapGenerator.Exit.Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsKey(toX, toY))
+                    {
+                        mapGenerator.keys[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsFireStorm(toX, toY))
+                    {
+                        mapGenerator.fireStorms[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsEarthQuake(toX, toY))
+                    {
+                        mapGenerator.earthQuakes[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsWaterFallDance(toX, toY))
+                    {
+                        mapGenerator.waterFallDances[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsApplebuff(toX, toY))
+                    {
+                        mapGenerator.buffs[toX, toY].Hit();
+                        positionX = toX;
+                        positionY = toY;
+                        transform.position = new Vector3(positionX, positionY, 0);
+                    }
+                    else if (IsEnemy(toX, toY))
+                    {
+                        mapGenerator.enemies[toX, toY].Hit();
+                    }
                 }
-            }
+                else
+                {
+                    positionX = toX;
+                    positionY = toY;
+                    transform.position = new Vector3(positionX, positionY, 0);
+                    TakeDamage(1); // เดินชนวัตถุที่ไม่สามารถเดินผ่านได้ จะเสียพลังชีวิต
+                }
 
+                if (this is OOPPlayer)
+                {
+                    if (fromX != positionX || fromY != positionY)
+                    {
+                        mapGenerator.mapdata[fromX, fromY] = mapGenerator.empty;
+                        mapGenerator.mapdata[positionX, positionY] = mapGenerator.playerBlock;
+                        mapGenerator.MoveEnemies();
+                    }
+                }
+                
+            }
         }
         // hasPlacement คืนค่า true ถ้ามีการวางอะไรไว้บน map ที่ตำแหน่ง x,y
         public bool HasPlacement(int x, int y)
@@ -161,6 +169,11 @@ namespace Searching
         {
             int mapData = mapGenerator.GetMapData(x, y);
             return mapData == mapGenerator.waterFallDance;
+        }
+        public bool IsApplebuff(int x, int y)
+        {
+            int mapData = mapGenerator.GetMapData(x, y);
+            return mapData == mapGenerator.Applebuff;
         }
         public bool IsKey(int x, int y)
         {
@@ -243,6 +256,11 @@ namespace Searching
             currentHealth += healPoint * (Bonuse ? 2 : 1);
             Debug.Log("Current Energy : " + currentHealth);
         }
+        public  void BuffMovement(int additionalMoves)
+        {
+            extraMove += additionalMoves;
+            Debug.Log("Movement buffed! Extra move: " + extraMove);
+        }       
 
         protected virtual void CheckDead()
         {
