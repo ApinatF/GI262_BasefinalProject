@@ -13,6 +13,7 @@ namespace Searching
         public GameObject gameOverUI;
         //public SkillBook skillBook;
         public ObjectType type = ObjectType.Player;
+        private bool isHealthBuffed = false;
 
 
         public void Start()
@@ -26,6 +27,12 @@ namespace Searching
         {
             SetHeaith();
 
+            if (currentHealth < 5 && !isHealthBuffed)
+            {
+                currentHealth += 4; // บวก 4
+                isHealthBuffed = true; // ตั้งค่าเป็น true เพื่อบัฟครั้งเดียว
+                Debug.Log("Health Passive by 4! Current health: " + currentHealth);
+            }
             if (Input.GetKeyDown(KeyCode.W))
             {
                 TakeDamage(1);
