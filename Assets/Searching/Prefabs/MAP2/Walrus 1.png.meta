@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: d005d33933dae1447ace0bfa3dc50ea4
+guid: 8d5070dd69789d54ebc9ffaa1c7c3967
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 21300000
-    second: Tiger_Idle_0
+    second: Walrus_Idle_0
   - first:
       213: 21300002
-    second: Tiger_Idle_1
+    second: Walrus_Idle_1
   - first:
       213: 21300004
-    second: Tiger_Run_0
+    second: Walrus_Run_0
   - first:
       213: 21300006
-    second: Tiger_Run_1
+    second: Walrus_Run_1
   - first:
       213: 21300008
-    second: Tiger_Run_2
+    second: Walrus_Run_2
   - first:
       213: 21300010
-    second: Tiger_Run_3
+    second: Walrus_Run_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -154,13 +154,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tiger_Idle_0
+      name: Walrus_Idle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 19
+        y: 13
         width: 33
-        height: 19
+        height: 13
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,13 +175,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiger_Idle_1
+      name: Walrus_Idle_1
       rect:
         serializedVersion: 2
         x: 33
-        y: 19
+        y: 13
         width: 33
-        height: 19
+        height: 13
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,13 +196,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiger_Run_0
+      name: Walrus_Run_0
       rect:
         serializedVersion: 2
         x: 66
-        y: 19
+        y: 13
         width: 33
-        height: 19
+        height: 13
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,13 +217,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiger_Run_1
+      name: Walrus_Run_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 33
-        height: 19
+        height: 13
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,13 +238,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiger_Run_2
+      name: Walrus_Run_2
       rect:
         serializedVersion: 2
         x: 33
         y: 0
         width: 33
-        height: 19
+        height: 13
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,13 +259,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiger_Run_3
+      name: Walrus_Run_3
       rect:
         serializedVersion: 2
         x: 66
         y: 0
         width: 33
-        height: 19
+        height: 13
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,12 +290,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tiger_Idle_0: 21300000
-      Tiger_Idle_1: 21300002
-      Tiger_Run_0: 21300004
-      Tiger_Run_1: 21300006
-      Tiger_Run_2: 21300008
-      Tiger_Run_3: 21300010
+      Walrus_Idle_0: 21300000
+      Walrus_Idle_1: 21300002
+      Walrus_Run_0: 21300004
+      Walrus_Run_1: 21300006
+      Walrus_Run_2: 21300008
+      Walrus_Run_3: 21300010
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

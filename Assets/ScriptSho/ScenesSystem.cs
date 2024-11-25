@@ -8,8 +8,6 @@ using TMPro;
 public class ScenesSystem : MonoBehaviour
 {
     [SerializeField] private string newScene;
-      
-    private int deathCount = 0;
     public GameObject gameOverUI;
          
     public void NewGame()
