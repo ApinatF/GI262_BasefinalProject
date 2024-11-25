@@ -10,6 +10,7 @@ namespace Tree
     public class SkillBook : MonoBehaviour
     {
         public static SkillBook instance;
+        public Inventory inventory;
         
         public SkillTree elementSkillTree;
 
@@ -17,23 +18,20 @@ namespace Tree
         
         public Skill fireStorm;
         public Skill waterFallDance;
-        Skill earthQuake;
+        public Skill earthQuake;
         
-        Skill fireStormPlus;
-        Skill waterFallDancePlus;
-        Skill earthQuakePlus;
+        public Skill fireStormPlus;
+        public Skill waterFallDancePlus;
+        public Skill earthQuakePlus;
         //Skill fireExplosion;
 
         public SkillTree survivalSKillltree;
         Skill baseSurvival; //root
         
         Skill passiveEnergy;
-        Skill attackboostplus;
         
         Skill activeEnergy;
-        Skill healthboostplus;
         
-        Skill charge;
 
         private void Awake()
         {
@@ -128,36 +126,102 @@ namespace Tree
             {
                 attack.Unlock();
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                fireStorm.Unlock();
+                
+                if (Gamemanager.instance.skillsToken > 0 )
+                {
+                    if(fireStormPlus.isUnlocked) return;
+                    fireStormPlus.Unlock();
+                    Gamemanager.instance.skillsToken -= 1;
+                    
+                    Debug.Log("FireStormPlus isUnlocked");
+                }
+                else
+                {
+                    Debug.Log("FireStormBook lost in Inventory ");
+                }
+                
             }
-            if (Input.GetKeyDown(KeyCode.T))
+            if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                fireStormPlus.Unlock();
+                if (Gamemanager.instance.skillsToken > 0 )
+                {
+                    if(waterFallDancePlus.isUnlocked) return;
+                    waterFallDancePlus.Unlock();
+                    Gamemanager.instance.skillsToken -= 1;
+                    
+                    Debug.Log("WaterFallDancePlus isUnlocked");
+                }
+                else
+                {
+                    Debug.Log("WaterFallDancePlus lost in Inventory ");
+                }
             }
-            if (Input.GetKeyDown(KeyCode.Y))
+            if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                waterFallDancePlus.Unlock();
-            }
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                earthQuakePlus.Unlock();
+                if (Gamemanager.instance.skillsToken > 0 )
+                {
+                    if(earthQuakePlus.isUnlocked) return;
+                    earthQuakePlus.Unlock();
+                    Gamemanager.instance.skillsToken -= 1;
+                    
+                    Debug.Log("EarthQuakePlus isUnlocked");
+                }
+                else
+                {
+                    Debug.Log("EarthQuakePlus lost in Inventory ");
+                }
+                
             }
             
             ////
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                fireStorm.Unlock();
+                if (Gamemanager.instance.skillsToken > 0)
+                {
+                    if(fireStorm.isUnlocked) return;
+                    fireStorm.Unlock();
+                    Gamemanager.instance.skillsToken -= 1;
+                    
+                    Debug.Log("FireStorm isUnlocked --> Next Level is FireStormPlus");
+                }
+                else
+                {
+                    Debug.Log("Skilll token is Low");
+                }
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                //Gamemanager.instance.skillsToken -= 1f;
-                waterFallDance.Unlock();
+                if (Gamemanager.instance.skillsToken > 0)
+                {
+                    if(waterFallDance.isUnlocked) return;
+                    waterFallDance.Unlock();
+                    Gamemanager.instance.skillsToken -= 1;
+                    
+                    Debug.Log("WaterFallDance isUnlocked --> Next Level is WaterFallDancePlus");
+                }
+                else
+                {
+                    Debug.Log("Skilll token is Low");
+                }
+                
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                earthQuake.Unlock();
+                if (Gamemanager.instance.skillsToken > 0)
+                {
+                    if(earthQuake.isUnlocked) return;
+                    earthQuake.Unlock();
+                    Gamemanager.instance.skillsToken -= 1;
+                    
+                    Debug.Log("EarthQuake isUnlocked --> Next Level is EarthQuakePlus");
+                }
+                else
+                {
+                    Debug.Log("Skilll token is Low");
+                }
+                
             }
             
         }

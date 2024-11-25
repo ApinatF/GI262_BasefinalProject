@@ -148,12 +148,11 @@ MonoBehaviour:
   positionX: 0
   positionY: 0
   mapGenerator: {fileID: 0}
-  maxHealth: 0
+  maxHealth: 5
   currentHealth: 0
   energy: 4
-  AttackPoint: 2
+  AttackPoint: 1
   extraMove: 0
-  gameOverUI: {fileID: 4575779297772167653}
   type: 1
 --- !u!1 &4575779297772167653
 GameObject:

@@ -79,9 +79,9 @@ namespace Searching
 
         public void UseFireStorm()
         {
-            if (inventory.numberOfItem("FireStorm") > 0 || SkillBook.instance.fireStorm.isUnlocked) //inventory.numberOfItem("FireStorm") > 0 ||
+            if (SkillBook.instance.fireStorm.isUnlocked && energy > 0) //inventory.numberOfItem("FireStorm") > 0 ||
             {
-                inventory.UseItem("FireStorm");
+                //inventory.UseItem("FireStorm");
                 energy -= 2;//-------------
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
@@ -110,7 +110,15 @@ namespace Searching
 
                         if (distanceX <= attackRadius && distanceY <= attackRadius)
                         {
-                            enemy.TakeFireDamage(10);
+                            if (SkillBook.instance.fireStormPlus.isUnlocked)
+                            {
+                                enemy.TakeFireDamage(15);
+                            }
+                            else
+                            {
+                                enemy.TakeFireDamage(10);
+                            }
+                            
                             hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
                         }
                     }
@@ -120,16 +128,17 @@ namespace Searching
             }
             else
             {
-                Debug.Log("No FireStorm in inventory");
+                //Debug.Log("No FireStorm in inventory");
+                Debug.Log("Spell Is Not Enough");
             }
         }
 
         public void UseWaterFallDance()
         {
-            if (inventory.numberOfItem("WaterFallDance") > 0)
+            if (SkillBook.instance.waterFallDance.isUnlocked && energy > 0)
             {
-                inventory.UseItem("WaterFallDance");
-
+                //inventory.UseItem("WaterFallDance");
+                energy -= 2;
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 if (enemies.Length == 0)
                 {
@@ -180,7 +189,14 @@ namespace Searching
                     {
                         if (enemy != null && enemy.positionX == targetX && enemy.positionY == targetY)
                         {
-                            enemy.TakeWaterDamage(10);
+                            if (SkillBook.instance.waterFallDancePlus.isUnlocked)
+                            {
+                                enemy.TakeFireDamage(15);
+                            }
+                            else
+                            {
+                                enemy.TakeFireDamage(10);
+                            }
                             hitEnemyPositions.Add(new Vector2Int(targetX, targetY));
                         }
                     }
@@ -190,16 +206,18 @@ namespace Searching
             }
             else
             {
-                Debug.Log("No WaterFallDance in inventory");
+                //Debug.Log("No WaterFallDance in inventory");
+                Debug.Log("Spell Is Not Enough");
             }
 
         }
 
         public void UseEarthQuake()
         {
-            if (inventory.numberOfItem("EarthQuake") > 0)
+            if (SkillBook.instance.earthQuake.isUnlocked && energy > 0)
             {
-                inventory.UseItem("EarthQuake");
+                //inventory.UseItem("EarthQuake");
+                energy -= 2;
 
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
@@ -230,7 +248,14 @@ namespace Searching
                         {
                             if (enemy != null && enemy.positionX == targetX && enemy.positionY == targetY)
                             {
-                                enemy.TakeDamage(10);
+                                if (SkillBook.instance.earthQuake.isUnlocked)
+                                {
+                                    enemy.TakeFireDamage(15);
+                                }
+                                else
+                                {
+                                    enemy.TakeFireDamage(10);
+                                }
                                 hitEnemyPositions.Add(new Vector2Int(targetX, targetY));
                             }
                         }
@@ -241,7 +266,8 @@ namespace Searching
             }
             else
             {
-                Debug.Log("No EarthQuake in inventory");
+                //Debug.Log("No EarthQuake in inventory");
+                Debug.Log("Spell Is Not Enough");
             }
         }
 
