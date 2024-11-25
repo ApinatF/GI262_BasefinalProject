@@ -191,7 +191,7 @@ namespace Searching
                 }
                 else
                 {
-                    Debug.Log("Skilll token is Low");
+                    Debug.Log("Skill token is Low");
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -206,7 +206,7 @@ namespace Searching
                 }
                 else
                 {
-                    Debug.Log("Skilll token is Low");
+                    Debug.Log("Skill token is Low");
                 }
                 
             }
@@ -222,7 +222,7 @@ namespace Searching
                 }
                 else
                 {
-                    Debug.Log("Skilll token is Low");
+                    Debug.Log("Skill token is Low");
                 }
                 
             }
