@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ObjectType
+{
+    Player,
+    Enemy,
+    Buff,
+    Obstacle
+}
 
 namespace Searching
 {
@@ -11,7 +18,6 @@ namespace Searching
         public string Name;
         public int positionX;
         public int positionY;
-        
 
         public OOPMapGenerator mapGenerator;
 

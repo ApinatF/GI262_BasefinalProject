@@ -382,6 +382,7 @@ namespace Searching
         }
         public void PlaceApplebuff(int x, int y)
         {
+            
             int e = Random.Range(0, ApplebuffPrefab.Length);
             GameObject obj = Instantiate(ApplebuffPrefab[e], new Vector3(x, y, 0), Quaternion.identity);
             obj.transform.parent = wallParent;
@@ -391,6 +392,7 @@ namespace Searching
             buffs[x, y].positionY = y;
             buffs[x, y].mapGenerator = this;
             obj.name = $"Applebuff_{buffs[x, y].Name} {x}, {y}";
+            
         }
 
 

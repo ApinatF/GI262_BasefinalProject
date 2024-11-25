@@ -7,6 +7,8 @@ namespace Searching
 
     public class OOPEnemy : Character
     {
+        
+        public ObjectType type = ObjectType.Enemy;
         public void Start()
         {
             GetRemainEnergy();
@@ -92,31 +94,62 @@ namespace Searching
         {
             int playerX = mapGenerator.player.positionX;
             int playerY = mapGenerator.player.positionY;
+            
             int toX = positionX;
             int toY = positionY;
             
-            int dx = playerX - positionX;
-            int dy = playerY - positionY;
+            int dx = playerX - positionX ;
+            int dy = playerY - positionY ;
+            
             
             if (Mathf.Abs(dx) > Mathf.Abs(dy))
             {
-                toX += (dx > 0) ? 1 : -1;
+                toX += (dx > 0) ? 1 : -1; 
             }
             else
             {
-                toY += (dy > 0) ? 1 : -1;
+                toY += (dy > 0) ? 1 : -1; 
             }
+            
             
             if (!HasPlacement(toX, toY))
             {
+                MoveEnemy(toX, toY);
+            }
+            else
+            {
+                if (toX != positionX) 
+                {
+                    toX = positionX;
+                    toY += (dy > 0) ? 1 : -1; 
+                }
+                else 
+                {
+                    toY = positionY;
+                    toX += (dx > 0) ? 1 : -1; 
+                }
+
+                if (!HasPlacement(toX, toY))
+                {
+                    MoveEnemy(toX, toY);
+                }
+                else
+                {
+                    Debug.Log("Enemy is surrounded and cannot move.");
+                }
+            }
+            
+            void MoveEnemy(int toX, int toY)
+            {
                 mapGenerator.mapdata[positionX, positionY] = mapGenerator.empty;
                 mapGenerator.enemies[positionX, positionY] = null;
-                
+
                 positionX = toX;
                 positionY = toY;
-                
+
                 mapGenerator.mapdata[positionX, positionY] = mapGenerator.enemy;
                 mapGenerator.enemies[positionX, positionY] = this;
+
                 transform.position = new Vector3(positionX, positionY, 0);
             }
         }

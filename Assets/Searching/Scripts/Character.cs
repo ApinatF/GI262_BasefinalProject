@@ -20,7 +20,7 @@ namespace Searching
         protected bool isAlive;
         protected bool isFreeze;
 
-        // Start is called before the first frame update
+        
         protected void Awake()
         {
             currentHealth = maxHealth;
@@ -39,11 +39,15 @@ namespace Searching
                 isFreeze = false;
                 return;
             }
-            int totalMoves = 1 + extraMove; 
+
+            if (this is OOPPlayer)
+            {
+                int totalMoves = 1 + extraMove;
             for (int moveCount = 0; moveCount < totalMoves; moveCount++)
             {
                 int toX = (int)(positionX + direction.x);
                 int toY = (int)(positionY + direction.y);
+                
                 int fromX = positionX;
                 int fromY = positionY;
 
@@ -102,7 +106,7 @@ namespace Searching
                         positionY = toY;
                         transform.position = new Vector3(positionX, positionY, 0);
                     }
-                    else if (IsApplebuff(toX, toY))
+                    else if (this is OOPPlayer && IsApplebuff(toX, toY))
                     {
                         mapGenerator.buffs[toX, toY].Hit();
                         positionX = toX;
@@ -131,6 +135,9 @@ namespace Searching
                         mapGenerator.MoveEnemies();
                     }
                 }
+            }
+            
+                
                 
             }
         }
@@ -256,11 +263,23 @@ namespace Searching
             currentHealth += healPoint * (Bonuse ? 2 : 1);
             Debug.Log("Current Energy : " + currentHealth);
         }
-        public  void BuffMovement(int additionalMoves)
+        
+        public void BuffMovement(int additionalMoves)
         {
-            extraMove += additionalMoves;
+            /*extraMove += additionalMoves;
             Debug.Log("Movement buffed! Extra move: " + extraMove);
-        }       
+            Debug.Log(Name + " received movement buff! Extra move: " + extraMove);*/
+            
+            if (this is OOPPlayer)
+            {
+                extraMove += additionalMoves;
+                Debug.Log("Movement buffed! Extra move: " + extraMove);
+            }
+            else
+            {
+                Debug.Log("BuffMovement called on non-Player character.");
+            }
+        }
 
         protected virtual void CheckDead()
         {

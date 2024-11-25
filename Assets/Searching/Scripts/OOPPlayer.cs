@@ -11,7 +11,7 @@ namespace Searching
     {
         public Inventory inventory;
         //public SkillBook skillBook;
-        
+        public ObjectType type = ObjectType.Player;
 
 
         public void Start()
@@ -132,38 +132,73 @@ namespace Searching
 
         public void UseWaterFallDance()
         {
-            if (inventory.numberOfItem("WaterFallDance") > 0 )
+            if (inventory.numberOfItem("WaterFallDance") > 0) 
             {
-                inventory.UseItem("WaterFallDance");
-                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
-                List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
-                
-                int attackRadius = 1;
-                
-                int playerX = this.positionX;
-                int playerY = this.positionY;
-                
-                foreach (Character enemy in enemies)
-                {
-                    if (enemy != null)
-                    {
-                        int distanceX = Mathf.Abs(enemy.positionX - playerX);
-                        int distanceY = Mathf.Abs(enemy.positionY - playerY);
+                 inventory.UseItem("WaterFallDance");
 
-                        if (distanceX <= attackRadius && distanceY <= attackRadius)
-                        {
-                            enemy.TakeWaterDamage(10);
-                            hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
-                        }
+            OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
+            if (enemies.Length == 0)
+            {
+                Debug.Log("No enemies found to attack.");
+                return;
+            }
+
+            // ค้นหา Enemy ที่อยู่ใกล้ที่สุด
+            Character closestEnemy = null;
+            float minDistance = float.MaxValue;
+
+            int playerX = this.positionX;
+            int playerY = this.positionY;
+
+            foreach (Character enemy in enemies)
+            {
+                if (enemy != null)
+                {
+                    float distance = Vector2.Distance(new Vector2(playerX, playerY), new Vector2(enemy.positionX, enemy.positionY));
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestEnemy = enemy;
                     }
                 }
-                
-                mapGenerator.TriggerWaterFallDance(hitEnemyPositions.ToArray());
+            }
+
+            if (closestEnemy == null)
+            {
+                Debug.Log("No valid enemy to attack.");
+                return;
+            }
+
+            // กำหนดทิศทางโจมตีไปยังศัตรูที่ใกล้ที่สุด
+            int directionX = Mathf.Clamp(closestEnemy.positionX - playerX, -1, 1);
+            int directionY = Mathf.Clamp(closestEnemy.positionY - playerY, -1, 1);
+
+            List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
+            int attackRange = 5; // ระยะไกลสุดของการโจมตี
+
+            for (int i = 1; i <= attackRange; i++)
+            {
+                int targetX = playerX + directionX * i;
+                int targetY = playerY + directionY * i;
+
+                // ตรวจสอบว่ามี Enemy อยู่ในตำแหน่งเป้าหมาย
+                foreach (Character enemy in enemies)
+                {
+                    if (enemy != null && enemy.positionX == targetX && enemy.positionY == targetY)
+                    {
+                        enemy.TakeWaterDamage(10);
+                        hitEnemyPositions.Add(new Vector2Int(targetX, targetY));
+                    }
+                }
+            }
+
+            mapGenerator.TriggerWaterFallDance(hitEnemyPositions.ToArray());
             }
             else
             {
                 Debug.Log("No WaterFallDance in inventory");
             }
+                
         }
 
         public void UseEarthQuake()
@@ -171,29 +206,43 @@ namespace Searching
             if (inventory.numberOfItem("EarthQuake") > 0)
             {
                 inventory.UseItem("EarthQuake");
+
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
-                
-                int attackRadius = 1;
-                
+
                 int playerX = this.positionX;
                 int playerY = this.positionY;
-                
-                foreach (Character enemy in enemies)
-                {
-                    if (enemy != null)
-                    {
-                        int distanceX = Mathf.Abs(enemy.positionX - playerX);
-                        int distanceY = Mathf.Abs(enemy.positionY - playerY);
 
-                        if (distanceX <= attackRadius && distanceY <= attackRadius)
+                // ทิศทางการโจมตี: บน, ล่าง, ซ้าย, ขวา
+                Vector2Int[] directions = new Vector2Int[]
+                {
+                    new Vector2Int(0, 1),  // บน
+                    new Vector2Int(0, -1), // ล่าง
+                    new Vector2Int(-1, 0), // ซ้าย
+                    new Vector2Int(1, 0)   // ขวา
+                };
+
+                int attackRange = 2; // ระยะโจมตี 2 ช่องในแต่ละทิศทาง
+
+                foreach (Vector2Int direction in directions)
+                {
+                    for (int i = 1; i <= attackRange; i++)
+                    {
+                        int targetX = playerX + direction.x * i;
+                        int targetY = playerY + direction.y * i;
+
+                        // ตรวจสอบว่ามีศัตรูในตำแหน่งเป้าหมาย
+                        foreach (Character enemy in enemies)
                         {
-                            enemy.TakeDamage(10);
-                            hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
+                            if (enemy != null && enemy.positionX == targetX && enemy.positionY == targetY)
+                            {
+                                enemy.TakeDamage(10);
+                                hitEnemyPositions.Add(new Vector2Int(targetX, targetY));
+                            }
                         }
                     }
                 }
-                
+
                 mapGenerator.TriggerEarthQuakeEffect(hitEnemyPositions.ToArray());
             }
             else
@@ -228,8 +277,6 @@ namespace Searching
             return enemies;
         }
         
-        
-
     }
 
 }
