@@ -1235,6 +1235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5462517699501877825, guid: a86c7bec0ab7e564e802e8eb34203893, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 418901505}
     - target: {fileID: 8291082145345609998, guid: a86c7bec0ab7e564e802e8eb34203893, type: 3}
       propertyPath: m_Name
       value: SkillBook

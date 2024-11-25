@@ -147,7 +147,7 @@ MonoBehaviour:
   positionX: 0
   positionY: 0
   mapGenerator: {fileID: 0}
-  maxHealth: 10
+  maxHealth: 15
   currentHealth: 0
   energy: 4
   AttackPoint: 2

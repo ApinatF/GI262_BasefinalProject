@@ -129,25 +129,27 @@ namespace Searching
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 
-                if (Gamemanager.instance.skillsToken > 0 && inventory.numberOfItem("FireStorm") < 0)
+                if (Gamemanager.instance.skillsToken > 0 && inventory.numberOfItem("FireStorm") > 0)
                 {
                     if(fireStormPlus.isUnlocked) return;
+                    inventory.UseItem("FireStorm");
                     fireStormPlus.Unlock();
                     Gamemanager.instance.skillsToken -= 1;
                     
                     Debug.Log("FireStormPlus isUnlocked");
                 }
-                else
+                else 
                 {
                     Debug.Log("FireStormBook lost in Inventory ");
                 }
                 
             }
-            if (Input.GetKeyDown(KeyCode.Alpha5))
+            if (Input.GetKeyDown(KeyCode.Alpha5) )
             {
-                if (Gamemanager.instance.skillsToken > 0 )
+                if (Gamemanager.instance.skillsToken > 0 && inventory.numberOfItem("WaterFallDance") > 0 )
                 {
                     if(waterFallDancePlus.isUnlocked) return;
+                    inventory.UseItem("WaterFallDance");
                     waterFallDancePlus.Unlock();
                     Gamemanager.instance.skillsToken -= 1;
                     
@@ -160,9 +162,10 @@ namespace Searching
             }
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                if (Gamemanager.instance.skillsToken > 0 )
+                if (Gamemanager.instance.skillsToken > 0 && inventory.numberOfItem("EarthQuake") > 0 )
                 {
                     if(earthQuakePlus.isUnlocked) return;
+                    inventory.UseItem("EarthQuake");
                     earthQuakePlus.Unlock();
                     Gamemanager.instance.skillsToken -= 1;
                     
