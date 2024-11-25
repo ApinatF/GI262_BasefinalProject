@@ -10,6 +10,7 @@ namespace Searching
     public class OOPPlayer : Character
     {
         public Inventory inventory;
+        public GameObject gameOverUI;
         //public SkillBook skillBook;
         public ObjectType type = ObjectType.Player;
 
@@ -18,17 +19,17 @@ namespace Searching
         {
             PrintInfo();
             GetRemainEnergy();
-            
+
         }
 
         public void Update()
         {
             SetHeaith();
-            
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 TakeDamage(1);
-                Move(Vector2.up );
+                Move(Vector2.up);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -71,27 +72,20 @@ namespace Searching
                 _enemy.TakeFireDamage(AttackPoint);
             }
         }
-        
 
-        protected override void CheckDead()
-        {
-            base.CheckDead();
-            if (energy <= 0)
-            {
-                Debug.Log("Player is Dead");
-            }
-        }
+
+
         //   Useskills
 
         public void UseFireStorm()
         {
-            if (inventory.numberOfItem("FireStorm") > 0 || SkillBook.instance.fireStorm.isUnlocked ) //inventory.numberOfItem("FireStorm") > 0 ||
+            if (inventory.numberOfItem("FireStorm") > 0 || SkillBook.instance.fireStorm.isUnlocked) //inventory.numberOfItem("FireStorm") > 0 ||
             {
                 inventory.UseItem("FireStorm");
                 energy -= 2;//-------------
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
-                
+
                 /*int count = 3;
                 if (count > enemies.Length)
                 {
@@ -101,12 +95,12 @@ namespace Searching
                 {
                     enemies[i].TakeDamage(10);
                 }*/ //โจมตีตามจำนวน
-                
+
                 int attackRadius = 1;
-                
+
                 int playerX = this.positionX;
                 int playerY = this.positionY;
-                
+
                 foreach (Character enemy in enemies)
                 {
                     if (enemy != null)
@@ -121,7 +115,7 @@ namespace Searching
                         }
                     }
                 }
-                
+
                 mapGenerator.TriggerFireStorm(hitEnemyPositions.ToArray());
             }
             else
@@ -132,73 +126,73 @@ namespace Searching
 
         public void UseWaterFallDance()
         {
-            if (inventory.numberOfItem("WaterFallDance") > 0) 
+            if (inventory.numberOfItem("WaterFallDance") > 0)
             {
-                 inventory.UseItem("WaterFallDance");
+                inventory.UseItem("WaterFallDance");
 
-            OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
-            if (enemies.Length == 0)
-            {
-                Debug.Log("No enemies found to attack.");
-                return;
-            }
-
-            // ค้นหา Enemy ที่อยู่ใกล้ที่สุด
-            Character closestEnemy = null;
-            float minDistance = float.MaxValue;
-
-            int playerX = this.positionX;
-            int playerY = this.positionY;
-
-            foreach (Character enemy in enemies)
-            {
-                if (enemy != null)
+                OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
+                if (enemies.Length == 0)
                 {
-                    float distance = Vector2.Distance(new Vector2(playerX, playerY), new Vector2(enemy.positionX, enemy.positionY));
-                    if (distance < minDistance)
-                    {
-                        minDistance = distance;
-                        closestEnemy = enemy;
-                    }
+                    Debug.Log("No enemies found to attack.");
+                    return;
                 }
-            }
 
-            if (closestEnemy == null)
-            {
-                Debug.Log("No valid enemy to attack.");
-                return;
-            }
+                // ค้นหา Enemy ที่อยู่ใกล้ที่สุด
+                Character closestEnemy = null;
+                float minDistance = float.MaxValue;
 
-            // กำหนดทิศทางโจมตีไปยังศัตรูที่ใกล้ที่สุด
-            int directionX = Mathf.Clamp(closestEnemy.positionX - playerX, -1, 1);
-            int directionY = Mathf.Clamp(closestEnemy.positionY - playerY, -1, 1);
+                int playerX = this.positionX;
+                int playerY = this.positionY;
 
-            List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
-            int attackRange = 5; // ระยะไกลสุดของการโจมตี
-
-            for (int i = 1; i <= attackRange; i++)
-            {
-                int targetX = playerX + directionX * i;
-                int targetY = playerY + directionY * i;
-
-                // ตรวจสอบว่ามี Enemy อยู่ในตำแหน่งเป้าหมาย
                 foreach (Character enemy in enemies)
                 {
-                    if (enemy != null && enemy.positionX == targetX && enemy.positionY == targetY)
+                    if (enemy != null)
                     {
-                        enemy.TakeWaterDamage(10);
-                        hitEnemyPositions.Add(new Vector2Int(targetX, targetY));
+                        float distance = Vector2.Distance(new Vector2(playerX, playerY), new Vector2(enemy.positionX, enemy.positionY));
+                        if (distance < minDistance)
+                        {
+                            minDistance = distance;
+                            closestEnemy = enemy;
+                        }
                     }
                 }
-            }
 
-            mapGenerator.TriggerWaterFallDance(hitEnemyPositions.ToArray());
+                if (closestEnemy == null)
+                {
+                    Debug.Log("No valid enemy to attack.");
+                    return;
+                }
+
+                // กำหนดทิศทางโจมตีไปยังศัตรูที่ใกล้ที่สุด
+                int directionX = Mathf.Clamp(closestEnemy.positionX - playerX, -1, 1);
+                int directionY = Mathf.Clamp(closestEnemy.positionY - playerY, -1, 1);
+
+                List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
+                int attackRange = 5; // ระยะไกลสุดของการโจมตี
+
+                for (int i = 1; i <= attackRange; i++)
+                {
+                    int targetX = playerX + directionX * i;
+                    int targetY = playerY + directionY * i;
+
+                    // ตรวจสอบว่ามี Enemy อยู่ในตำแหน่งเป้าหมาย
+                    foreach (Character enemy in enemies)
+                    {
+                        if (enemy != null && enemy.positionX == targetX && enemy.positionY == targetY)
+                        {
+                            enemy.TakeWaterDamage(10);
+                            hitEnemyPositions.Add(new Vector2Int(targetX, targetY));
+                        }
+                    }
+                }
+
+                mapGenerator.TriggerWaterFallDance(hitEnemyPositions.ToArray());
             }
             else
             {
                 Debug.Log("No WaterFallDance in inventory");
             }
-                
+
         }
 
         public void UseEarthQuake()
@@ -276,7 +270,27 @@ namespace Searching
             Array.Sort(enemies, (a, b) => a.energy.CompareTo(b.energy));
             return enemies;
         }
-        
-    }
 
+        protected override void CheckDead()
+        {
+            if (currentHealth <= 0)
+            {
+                Debug.Log("Player is Dead");
+
+                
+                if (gameOverUI != null)
+                {
+                    gameOverUI.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogError("Game Over UI is not assigned!");
+                }
+
+                Destroy(gameObject); 
+            }
+        }
+    }
 }
+
+

@@ -19,8 +19,9 @@ namespace Searching
         public int extraMove = 0;
         protected bool isAlive;
         protected bool isFreeze;
-
         
+
+
         protected void Awake()
         {
             currentHealth = maxHealth;
