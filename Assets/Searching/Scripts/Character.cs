@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -114,7 +115,14 @@ namespace Searching
                         positionY = toY;
                         transform.position = new Vector3(positionX, positionY, 0);
                     }
-                    else if (IsEnemy(toX, toY))
+                    else if (this is OOPPlayer && IsDeApplebuff(toX,toY))
+                    {
+                            mapGenerator.debuffs[toX, toY].Hit();
+                            positionX = toX;
+                            positionY = toY;
+                            transform.position = new Vector3(positionX, positionY, 0);
+                        }
+                        else if (IsEnemy(toX, toY))
                     {
                         mapGenerator.enemies[toX, toY].Hit();
                     }
@@ -182,6 +190,11 @@ namespace Searching
         {
             int mapData = mapGenerator.GetMapData(x, y);
             return mapData == mapGenerator.Applebuff;
+        }
+        public bool IsDeApplebuff(int x, int y)
+        {
+            int mapData = mapGenerator.GetMapData(x, y);
+            return mapData == mapGenerator.AppleDebuffs;
         }
         public bool IsKey(int x, int y)
         {
@@ -280,6 +293,12 @@ namespace Searching
             {
                 Debug.Log("BuffMovement called on non-Player character.");
             }
+        }
+
+        public void DeBuff(int dePoint)
+        {
+            currentHealth -= dePoint;
+            Debug.Log("Current Energy : " + currentHealth);
         }
 
         protected virtual void CheckDead()
