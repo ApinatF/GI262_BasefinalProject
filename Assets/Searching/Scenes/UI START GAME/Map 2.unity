@@ -5387,6 +5387,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: itemAppleDebuffCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: keysPrefab.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5519,6 +5523,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 110520, guid: caffc8a5aaba9fc4a987c3f6188bea7f, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: AppleDebuffsPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: ApplebuffPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 6476303242912763235, guid: 5cb8a3de05754884abbdc4eb99d99916, type: 3}
@@ -5550,6 +5558,10 @@ PrefabInstance:
       propertyPath: waterFallDancePrefab.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
+      propertyPath: AppleDebuffsPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 6476303242912763235, guid: 350368977ae9a434a98de2bb97c74a1e, type: 3}
     - target: {fileID: 8365133027701863277, guid: 896fac2834903504f8973b3186300203, type: 3}
       propertyPath: fireStormPrefabEffect.Array.size
       value: 1

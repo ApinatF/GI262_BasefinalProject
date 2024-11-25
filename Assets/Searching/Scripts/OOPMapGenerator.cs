@@ -420,7 +420,7 @@ namespace Searching
             debuffs[x, y].positionX = x;
             debuffs[x, y].positionY = y;
             debuffs[x, y].mapGenerator = this;
-            obj.name = $"AppleDebuff_{buffs[x, y].Name} {x}, {y}";
+            obj.name = $"AppleDebuff_{debuffs[x, y].Name} {x}, {y}";
 
         }
 

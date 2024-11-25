@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Searching;
 using UnityEngine;
 
-namespace Tree
+namespace Searching
 {
 
     public class SkillBook : MonoBehaviour
@@ -129,7 +129,7 @@ namespace Tree
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 
-                if (Gamemanager.instance.skillsToken > 0 )
+                if (Gamemanager.instance.skillsToken > 0 && inventory.numberOfItem("FireStorm") < 0)
                 {
                     if(fireStormPlus.isUnlocked) return;
                     fireStormPlus.Unlock();

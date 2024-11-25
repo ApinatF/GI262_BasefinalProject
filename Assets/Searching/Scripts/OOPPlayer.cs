@@ -79,7 +79,7 @@ namespace Searching
 
         public void UseFireStorm()
         {
-            if (SkillBook.instance.fireStorm.isUnlocked && energy > 0) //inventory.numberOfItem("FireStorm") > 0 ||
+            if (SkillBook.instance.fireStorm.isUnlocked && energy > 0) //if (inventory.numberOfItem("FireStorm") > 0 ) //
             {
                 //inventory.UseItem("FireStorm");
                 energy -= 2;//-------------

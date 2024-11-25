@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Searching;
 using UnityEngine;
 
-namespace Tree
+namespace Searching
 {
 
     public class Skill
