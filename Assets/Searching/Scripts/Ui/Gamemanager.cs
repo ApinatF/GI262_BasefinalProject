@@ -44,11 +44,11 @@ public class Gamemanager : MonoBehaviour
         
         
         
-        energyUi.text = $"SP= {sp.ToString()}";
+        energyUi.text = $"SP = {sp.ToString()}";
     
-        healthUi.text = $"HP= {hp.ToString()}";
+        healthUi.text = $"HP = {hp.ToString()}";
 
-        TokenUi.text = $"Token ={skillsToken.ToString()}";
+        TokenUi.text = $"Token = {skillsToken.ToString()}";
     }
     
     public void Gettoken(float exp)
