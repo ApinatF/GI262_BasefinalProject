@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Searching;
@@ -8,56 +9,102 @@ namespace Tree
 
     public class SkillBook : MonoBehaviour
     {
-        public SkillTree attackSkillTree;
+        public static SkillBook instance;
+        
+        public SkillTree elementSkillTree;
 
-        Skill attack;
-        Skill fireStorm;
-        Skill waterFallDance;
+        Skill attack; // root
+        
+        public Skill fireStorm;
+        public Skill waterFallDance;
         Skill earthQuake;
         
-        Skill fireBall;
-        Skill fireBlast;
-        Skill fireWave;
-        Skill fireExplosion;
+        Skill fireStormPlus;
+        Skill waterFallDancePlus;
+        Skill earthQuakePlus;
+        //Skill fireExplosion;
+
+        public SkillTree survivalSKillltree;
+        Skill baseSurvival; //root
         
+        Skill passiveEnergy;
+        Skill attackboostplus;
+        
+        Skill activeEnergy;
+        Skill healthboostplus;
+        
+        Skill charge;
+
+        private void Awake()
+        {
+            if (instance == null) instance = this;
+        }
+
 
         public void Start()
         {
             #region Depicting the skill tree
-            // build skill tree
-            // └── Attack
+            // build Element skill tree
+            // └── Base Element
             //     └── FireStorm
-            //         ├── FireBlast
-            //         └── FireBall
-            //             └── FireWave
-            //                 └── FireExplosion
+            //            └── FireStormPlus
+            //     └── WaterFallDance
+            //            └── WaterFallDancePlus
+            //     └── EarthQuake
+            //             └── EarthQuakePlus
             #endregion
             
             
             attack = new Skill("Attack");
             attack.isAvailable = true;
+            
             fireStorm = new Skill("FireStorm");
             waterFallDance = new Skill("WaterFallDance");
             earthQuake = new Skill("EarthQuake");
             
             
-            fireBall = new Skill("FireBall");
-            fireBlast = new Skill("FireBlast");
-            fireWave = new Skill("FireWave");
-            fireExplosion = new Skill("FireExplosion");
+            fireStormPlus = new Skill("FireStormPlus");
+            waterFallDancePlus = new Skill("WaterFallDancePlus");
+            earthQuakePlus = new Skill("EarthQuakePlus");
 
             attack.nextSkills.Add(fireStorm);
-            waterFallDance.nextSkills.Add(waterFallDance);
-            earthQuake.nextSkills.Add(earthQuake);
+            attack.nextSkills.Add(waterFallDance);
+            attack.nextSkills.Add(earthQuake);
+            
+            fireStorm.nextSkills.Add(fireStormPlus);
+            waterFallDance.nextSkills.Add(waterFallDancePlus);
+            earthQuake.nextSkills.Add(earthQuakePlus);
             
             
-            fireStorm.nextSkills.Add(fireBlast);
-            fireStorm.nextSkills.Add(fireBall);
-            fireBall.nextSkills.Add(fireWave);
-            fireWave.nextSkills.Add(fireExplosion);
+            
+            attack.Unlock();
+            this.elementSkillTree = new SkillTree(attack);
+            //-------------------------------------------------------------------------------
+            
+            #region Depicting the skill tree
+            // build skill tree 
+            // └── BaseSurvival
+            //     └── Active energy
+            //     └── Passive energy
+            
+            #endregion
+            baseSurvival = new Skill("BaseSurvival");
+            baseSurvival.isAvailable = true;
+            
+            activeEnergy = new Skill("ActiveEnergy");
+            
+            
+            passiveEnergy = new Skill("PassiveEnergy");
+            
+
+            baseSurvival.nextSkills.Add(activeEnergy);
+            baseSurvival.nextSkills.Add(passiveEnergy);
+            
+            
+            baseSurvival.Unlock();
         
 
-            this.attackSkillTree = new SkillTree(attack);
+            this.survivalSKillltree = new SkillTree(baseSurvival);
         }
 
         public void Update()
@@ -65,12 +112,19 @@ namespace Tree
 
             if (Input.GetKeyDown(KeyCode.P))
             {
-                attackSkillTree.rootSkill.PrintSkillTreeHierarchy("");
-                attackSkillTree.rootSkill.PrintSkillTree();
+                elementSkillTree.rootSkill.PrintSkillTreeHierarchy("ElementSkillTree");
+                //elementSkillTree.rootSkill.PrintSkillTree();
+                Debug.Log("====================================");
+            }
+            
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                survivalSKillltree.rootSkill.PrintSkillTreeHierarchy("SurvivalSKillltree");
+                //survivalSKillltree.rootSkill.PrintSkillTree();
                 Debug.Log("====================================");
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Keypad0))
             {
                 attack.Unlock();
             }
@@ -80,16 +134,32 @@ namespace Tree
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                fireBall.Unlock();
+                fireStormPlus.Unlock();
             }
             if (Input.GetKeyDown(KeyCode.Y))
             {
-                fireBlast.Unlock();
+                waterFallDancePlus.Unlock();
             }
             if (Input.GetKeyDown(KeyCode.U))
             {
-                fireWave.Unlock();
+                earthQuakePlus.Unlock();
             }
+            
+            ////
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                fireStorm.Unlock();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                //Gamemanager.instance.skillsToken -= 1f;
+                waterFallDance.Unlock();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                earthQuake.Unlock();
+            }
+            
         }
     }
 

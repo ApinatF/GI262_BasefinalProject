@@ -17,6 +17,7 @@ namespace Tree
         {
             this.name = name;
             isUnlocked = false;
+            isAvailable = false;
             nextSkills = new List<Skill>();
         }
 
@@ -56,7 +57,7 @@ namespace Tree
 
         public void PrintSkillTreeHierarchy(string indent)
         {
-            Debug.Log($"{indent}- Skill: {name} available: {isAvailable} unlocked: {isUnlocked}");
+            Debug.Log($"{indent}    L__- Skill: {name} available: {isAvailable} unlocked: {isUnlocked}");
             foreach (var skill in this.nextSkills)
             {
                 skill.PrintSkillTreeHierarchy(indent + "    "); // Increase indentation for the next level

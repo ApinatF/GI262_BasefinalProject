@@ -43,8 +43,9 @@ namespace Searching
 
         protected override void CheckDead()
         {
+            Gamemanager.instance.Gettoken(10f);
             base.CheckDead();
-            if (energy <= 0)
+            if (currentHealth <= 0)
             {
                 mapGenerator.enemies[positionX, positionY] = null;
                 mapGenerator.mapdata[positionX, positionY] = mapGenerator.empty;

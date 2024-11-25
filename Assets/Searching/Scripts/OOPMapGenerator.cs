@@ -30,7 +30,6 @@ namespace Searching
         public GameObject[] waterFallDancePrefab;
         public GameObject[] earthQuakePrefab;
         public GameObject[] ApplebuffPrefab;
-        
         [Header("Set Effect Prefab")]
         public GameObject[] fireStormPrefabEffect;
         public GameObject[] waterFallWaterPrefabEffect;
@@ -51,11 +50,13 @@ namespace Searching
         public int itemWaterFallDanceCount;
         public int itemApplebuffCount;
         public int enemyCount;
+        //public int confusedFruitCount;
 
         public int[,] mapdata;
 
         public OOPWall[,] walls;
         public OOPItemPotion[,] potions;
+        //public OOPconfusedFruit[,] confusedFruits;
         public OOPFireStormItem[,] fireStorms;
         public OOPEarthQuake[,] earthQuakes;
         public OOPWaterFallDance[,] waterFallDances;
@@ -236,6 +237,19 @@ namespace Searching
             potions[x, y].mapGenerator = this;
             obj.name = $"Item_{potions[x, y].Name} {x}, {y}";
         }
+        
+        /*public void PlaceConfusedfruit(int x, int y)
+        {
+            int r = Random.Range(0, itemsPrefab.Length);
+            GameObject obj = Instantiate(confusedFruitPrefab[r], new Vector3(x, y, 0), Quaternion.identity);
+            obj.transform.parent = itemPotionParent;
+            mapdata[x, y] = pconfusedFruit;
+            potions[x, y] = obj.GetComponent<OOPItemPotion>(); 
+            potions[x, y].positionX = x;
+            potions[x, y].positionY = y;
+            potions[x, y].mapGenerator = this;
+            obj.name = $"Item_{potions[x, y].Name} {x}, {y}";
+        }*/
         
 
         public void PlaceKey(int x, int y)

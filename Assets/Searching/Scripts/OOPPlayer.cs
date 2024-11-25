@@ -10,18 +10,24 @@ namespace Searching
     public class OOPPlayer : Character
     {
         public Inventory inventory;
+        //public SkillBook skillBook;
+        
+
 
         public void Start()
         {
             PrintInfo();
             GetRemainEnergy();
+            
         }
 
         public void Update()
         {
+            SetHeaith();
+            
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Move(Vector2.up);
+                Move(Vector2.up );
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -61,6 +67,7 @@ namespace Searching
                 _enemy.TakeFireDamage(AttackPoint);
             }
         }
+        
 
         protected override void CheckDead()
         {
@@ -70,12 +77,14 @@ namespace Searching
                 Debug.Log("Player is Dead");
             }
         }
+        //   Useskills
 
         public void UseFireStorm()
         {
-            if (inventory.numberOfItem("FireStorm") > 0)
+            if (inventory.numberOfItem("FireStorm") > 0 || SkillBook.instance.fireStorm.isUnlocked ) //inventory.numberOfItem("FireStorm") > 0 ||
             {
                 inventory.UseItem("FireStorm");
+                energy -= 2;//-------------
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
                 List<Vector2Int> hitEnemyPositions = new List<Vector2Int>();
                 
@@ -103,7 +112,7 @@ namespace Searching
 
                         if (distanceX <= attackRadius && distanceY <= attackRadius)
                         {
-                            enemy.TakeFireDamage(5);
+                            enemy.TakeFireDamage(10);
                             hitEnemyPositions.Add(new Vector2Int(enemy.positionX, enemy.positionY));
                         }
                     }
@@ -119,7 +128,7 @@ namespace Searching
 
         public void UseWaterFallDance()
         {
-            if (inventory.numberOfItem("WaterFallDance") > 0)
+            if (inventory.numberOfItem("WaterFallDance") > 0 )
             {
                 inventory.UseItem("WaterFallDance");
                 OOPEnemy[] enemies = SortEnemiesByRemainningEnergy2();
@@ -214,6 +223,8 @@ namespace Searching
             Array.Sort(enemies, (a, b) => a.energy.CompareTo(b.energy));
             return enemies;
         }
+        
+        
 
     }
 
